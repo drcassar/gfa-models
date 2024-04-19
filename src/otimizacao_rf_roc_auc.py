@@ -25,16 +25,18 @@ METRICS = ["roc_auc", "accuracy"]
 
 
 # Importando dados tratado e utilizando binarizador no target
-df = pd.read_csv("/home/diogo23039/work/GF/2024_1/data/GFdata_compound_binary.csv", sep = "\t")
+df = pd.read_csv(
+    "/home/diogo23039/work/GF/2024_1/data/GFdata_compound_binary.csv", sep="\t"
+)
 
 features_columns = []
 for column in df.columns:
     features_columns.append(column)
-features_columns.remove('GF')
+features_columns.remove("GF")
 
 DATASET_NAME = round(df, 2)
 FEATURES = features_columns
-TARGET = ['GF']
+TARGET = ["GF"]
 
 df = df.reindex(FEATURES + TARGET, axis=1)
 
@@ -52,7 +54,10 @@ df
 # Split de dados
 indices = df.index
 indices_treino, indices_teste = train_test_split(
-    indices, test_size=TAMANHO_DIVISAO_TESTE, random_state=SEMENTE_ALEATORIA, stratify=df['GF']
+    indices,
+    test_size=TAMANHO_DIVISAO_TESTE,
+    random_state=SEMENTE_ALEATORIA,
+    stratify=df["GF"],
 )
 
 df_treino = df.loc[indices_treino]
@@ -66,6 +71,7 @@ y_teste = df_teste.reindex(TARGET, axis=1).values.ravel()
 
 X = df.reindex(FEATURES, axis=1).values
 y = df.reindex(TARGET, axis=1).values.ravel()
+
 
 def cria_instancia_modelo(trial):
     """Cria uma instância do modelo.
@@ -89,9 +95,7 @@ def cria_instancia_modelo(trial):
         "random_state": SEMENTE_ALEATORIA,
     }
 
-    has_max_depth = trial.suggest_categorical(
-        "has_max_depth", [True, False]
-    )
+    has_max_depth = trial.suggest_categorical("has_max_depth", [True, False])
     if has_max_depth:
         parametros["max_depth"] = trial.suggest_int(
             "max_depth", 1, 100, log=True
@@ -141,26 +145,28 @@ def cria_instancia_modelo(trial):
     else:
         parametros["class_weight"] = None
 
-    has_ccp_alpha = trial.suggest_categorical(
-        "has_ccp_alpha", [True, False]
-    )
+    has_ccp_alpha = trial.suggest_categorical("has_ccp_alpha", [True, False])
     if has_ccp_alpha:
-        parametros["ccp_alpha"] = trial.suggest_float("ccp_alpha", 1e-5, 1, log=True)
+        parametros["ccp_alpha"] = trial.suggest_float(
+            "ccp_alpha", 1e-5, 1, log=True
+        )
     else:
         parametros["ccp_alpha"] = 0
-
 
     max_samples_is_float = trial.suggest_categorical(
         "max_samples_is_float", [True, False]
     )
     if max_samples_is_float:
-        parametros["max_samples"] = trial.suggest_float("max_samples", 1e-5, 1, log=True)
+        parametros["max_samples"] = trial.suggest_float(
+            "max_samples", 1e-5, 1, log=True
+        )
     else:
         parametros["max_samples"] = None
 
     model = RandomForestClassifier(**parametros)
 
     return model
+
 
 def funcao_objetivo(
     trial,
@@ -186,12 +192,17 @@ def funcao_objetivo(
 
     return metricas.mean()
 
+
 objeto_de_estudo = create_study(direction="maximize")
+
 
 def funcao_objetivo_parcial(trial):
     return funcao_objetivo(trial, X_treino, y_treino)
 
-objeto_de_estudo.optimize(funcao_objetivo_parcial, n_trials=NUM_TENTATIVAS_otimizacao)
+
+objeto_de_estudo.optimize(
+    funcao_objetivo_parcial, n_trials=NUM_TENTATIVAS_otimizacao
+)
 
 df_random_forest = objeto_de_estudo.trials_dataframe()
 
@@ -217,10 +228,12 @@ metricas = cross_validate(
 )
 
 # Determina-se o módulo das médias dos valores das iterações de cada métricas.
-roc_auc =  metricas["test_roc_auc"].mean()
+roc_auc = metricas["test_roc_auc"].mean()
 accuracy = metricas["test_accuracy"].mean()
 
 # Os valores das médias das métricas são exibidos
-print(f'As métricas por validação cruzada pelo modelo de floresta aleatória foram as seguintes:')
-print(f'roc_auc: {roc_auc:0.5f} k;')
-print(f'accuracy: {accuracy:0.5f} k;')
+print(
+    f"As métricas por validação cruzada pelo modelo de floresta aleatória foram as seguintes:"
+)
+print(f"roc_auc: {roc_auc:0.5f} k;")
+print(f"accuracy: {accuracy:0.5f} k;")
