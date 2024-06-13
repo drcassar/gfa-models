@@ -6,8 +6,7 @@ import pickle
 import seaborn as sns
 import joblib
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from optuna import create_study, Trial
@@ -15,6 +14,8 @@ from sklearn.preprocessing import LabelBinarizer
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_validate
+from imblearn.under_sampling import NearMiss
+from collections import Counter
 
 
 # Constantes
@@ -25,9 +26,18 @@ NUM_TENTATIVAS_OTIMIZACAO = 1000
 MAIN_METRIC = "roc_auc"
 METRICS = ["roc_auc", "accuracy"]
 
+print("###############################################################################\n" \
+      "#                                  ROC AUC                                    #\n" \
+      "###############################################################################\n \n")
+
+
+print("###############################################################################\n" \
+      "#                                 Nearmiss 1                                  #\n" \
+      "###############################################################################\n")
+
 
 # Importando dados tratado e utilizando binarizador no target
-df = pd.read_csv("GFdata_compound_binary.csv", sep = "\t")
+df = pd.read_csv("/home/diogo23039/work/GF/2024_1/data/GFdata_compound_binary.csv", sep = "\t")
 
 features_columns = []
 for column in df.columns:
@@ -44,10 +54,7 @@ binarizador.fit(df[TARGET])
 
 nomes_das_features = binarizador.classes_
 
-print(binarizador.transform(df[TARGET]))
-
 df[TARGET] = binarizador.transform(df[TARGET])
-df
 
 
 # Split de dados
@@ -67,6 +74,13 @@ y_teste = df_teste.reindex(TARGET, axis=1).values.ravel()
 
 X = df.reindex(FEATURES, axis=1).values
 y = df.reindex(TARGET, axis=1).values.ravel()
+
+
+print(f'Numero de exemplos de cristal e de vidro nos dados de treino antes do Nearmiss: {sorted(Counter(y_treino).items())}')
+nr = NearMiss(version=1) 
+X_treino_miss, y_treino_miss = nr.fit_resample(X_treino, y_treino)
+print(f'Numero de exemplos de cristal e de vidro nos dados de treino apos o Nearmiss: {sorted(Counter(y_treino_miss).items())} \n')
+
 
 def cria_instancia_modelo(trial):
     """Cria uma instância do modelo.
@@ -177,44 +191,66 @@ def funcao_objetivo(
 
     modelo = cria_instancia_modelo(trial)
 
-    metricas = cross_val_score(
-        modelo,
-        X,
-        y,
-        scoring=MAIN_METRIC,
-        cv=NUM_FOLDS,
-    )
+    try:
+        metricas = cross_val_score(
+            modelo,
+            X,
+            y,
+            scoring=MAIN_METRIC,
+            cv=NUM_FOLDS,
+        )
 
-    return np.min([np.mean(metricas), np.median([metricas])])
+        return np.min([np.mean(metricas), np.median([metricas])])
+    
+    except ValueError:
+        return np.nan
+
 
 objeto_de_estudo = create_study(direction="maximize")
 
 def funcao_objetivo_parcial(trial):
-    return funcao_objetivo(trial, X_treino, y_treino)
+    return funcao_objetivo(trial, X_treino_miss, y_treino_miss)
 
-objeto_de_estudo.optimize(funcao_objetivo_parcial, n_trials=NUM_TENTATIVAS_OTIMIZACAO)
 
-df_random_forest = objeto_de_estudo.trials_dataframe()
+# As tentativas são realizadas, sendo cada exemplo salvo em csv 
+for _ in range(NUM_TENTATIVAS_OTIMIZACAO):
+    objeto_de_estudo.optimize(funcao_objetivo_parcial, n_trials=1)
+    objeto_de_estudo.trials_dataframe().to_csv('model/tentativas_nearmiss1.csv')
 
-df_random_forest
 
-df_random_forest.to_csv('tentativas.csv')
-
+# informando detalhes do modelo da melhor tentativa
 melhor_trial_rf = objeto_de_estudo.best_trial
 
 print(f"Número do melhor trial: {melhor_trial_rf.number}")
 print(f"Parâmetros do melhor trial: {melhor_trial_rf.params}")
+print(f"Suposto ROC AUC da melhor trial pela validação cruzada: {melhor_trial_rf.value} \n")
 
-# Uma instância do modelo baseline é criada.
+
+# O melhor modelo é treinado com os dados nearmiss e testado
+modelo_rf_ot_nearmiss = cria_instancia_modelo(melhor_trial_rf)
+
+modelo_rf_ot_nearmiss.fit(X_treino_miss, y_treino_miss)
+y_previsao_rf_ot_nearmiss = modelo_rf_ot_nearmiss.predict(X_teste)
+
+roc_auc_rf_ot_nearmiss = roc_auc_score(y_teste, y_previsao_rf_ot_nearmiss)
+print(f'Métrica de ROC AUC para modelo otimizado NearMiss: {roc_auc_rf_ot_nearmiss}')
+
+accuracy_rf_ot = accuracy_score(y_teste, y_previsao_rf_ot_nearmiss)
+print(f'Métrica de acurácia para modelo otimizado NearMiss: {accuracy_rf_ot} \n')
+
+joblib.dump(modelo_rf_ot_nearmiss, "model/best_model_rf_nearmiss1.pkl")
+
+
+# O melhor modelo é treinado com todos os dados e testado
 modelo_rf_ot = cria_instancia_modelo(melhor_trial_rf)
 
 modelo_rf_ot.fit(X_treino, y_treino)
 y_previsao_rf_ot = modelo_rf_ot.predict(X_teste)
 
 roc_auc_rf_ot = roc_auc_score(y_teste, y_previsao_rf_ot)
-print("Métrica de ROC AUC para modelo otimizado:", roc_auc_rf_ot)
+print(f'Métrica de ROC AUC para modelo otimizado com todos os dados: {roc_auc_rf_ot}')
 
 accuracy_rf_ot = accuracy_score(y_teste, y_previsao_rf_ot)
-print("Métrica de acurácia para modelo otimizado:", accuracy_rf_ot)
+print(f'Métrica de acurácia para modelo otimizado com todos os dados: {accuracy_rf_ot} \n \n')
 
-joblib.dump(modelo_rf_ot, "best_model_rf.pkl")
+joblib.dump(modelo_rf_ot, "model/best_model_rf_nearmiss1_total.pkl")
