@@ -6,8 +6,7 @@ import pickle
 import seaborn as sns
 import joblib
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from optuna import create_study, Trial
@@ -27,7 +26,7 @@ METRICS = ["roc_auc", "accuracy"]
 
 
 # Importando dados tratado e utilizando binarizador no target
-df = pd.read_csv("GFdata_compound_binary.csv", sep = "\t")
+df = pd.read_csv("/home/diogo23039/work/GF/2024_1/data/atributos_engenheirados.csv.zip", sep = ",")
 
 features_columns = []
 for column in df.columns:
@@ -36,6 +35,10 @@ features_columns.remove('GF')
 
 FEATURES = features_columns
 TARGET = ['GF']
+
+
+#FEATURES = df.columns[:-1]
+#TARGET = df.columns[-1]
 
 df = df.reindex(FEATURES + TARGET, axis=1)
 
@@ -187,18 +190,15 @@ def funcao_objetivo(
 
     return np.min([np.mean(metricas), np.median([metricas])])
 
+
 objeto_de_estudo = create_study(direction="maximize")
 
 def funcao_objetivo_parcial(trial):
     return funcao_objetivo(trial, X_treino, y_treino)
 
-objeto_de_estudo.optimize(funcao_objetivo_parcial, n_trials=NUM_TENTATIVAS_OTIMIZACAO)
-
-df_random_forest = objeto_de_estudo.trials_dataframe()
-
-df_random_forest
-
-df_random_forest.to_csv('tentativas.csv')
+for _ in range(NUM_TENTATIVAS_OTIMIZACAO):
+    objeto_de_estudo.optimize(funcao_objetivo_parcial, n_trials=1)
+    objeto_de_estudo.trials_dataframe().to_csv('engenharia_de_atributos/model/tentativas.csv')
 
 melhor_trial_rf = objeto_de_estudo.best_trial
 
@@ -217,4 +217,4 @@ print("Métrica de ROC AUC para modelo otimizado:", roc_auc_rf_ot)
 accuracy_rf_ot = accuracy_score(y_teste, y_previsao_rf_ot)
 print("Métrica de acurácia para modelo otimizado:", accuracy_rf_ot)
 
-joblib.dump(modelo_rf_ot, "best_model_rf.pkl")
+joblib.dump(modelo_rf_ot, "engenharia_de_atributos/model/best_model_rf.pkl")
