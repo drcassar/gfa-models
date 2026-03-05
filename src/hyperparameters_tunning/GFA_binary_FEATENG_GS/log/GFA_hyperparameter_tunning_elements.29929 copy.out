@@ -1,0 +1,59 @@
+#############################################################################################################
+#                                               f1_score_macro                                              #
+#############################################################################################################
+
+Dataset type: Glass X Crystal GFA and Top Features CVs Feature Engineering with Unimodal Method F1-Score Macro
+Random seed: 0
+Test split size: 0.1
+Total number of trials: 2000, with cross-validation applied to the 100 best trials
+Mean time per trial: 1.204 ± 1.298 minutes
+Best trial number: 1789
+Best trial parameters: {'n_estimators': 384, 'criterion': 'log_loss', 'min_samples_split': 8, 'min_samples_leaf': 1, 'has_max_depth': False, 'max_features_is_float': True, 'max_features_float': 0.4973299266610802, 'has_max_leaf_nodes': False, 'min_impurity_decrease_is_float': True, 'min_impurity_decrease': 9.906552777448265e-05, 'has_class_weight': True, 'class_weight': 'balanced', 'has_ccp_alpha': True, 'ccp_alpha': 0.00013025735700945975, 'max_samples_is_float': False}
+Folds scores of f1_score_macro for the best trial by cross validation: [0.778418346403958, 0.7796256473184544, 0.7696051480713244, 0.7807225386212661, 0.7733421050469507, 0.7723281881040498, 0.7797325230802143, 0.7778361797032072, 0.781042009115924, 0.7692023380925654]
+Value of f1_score_macro for the best trial by cross validation: 0.7762
+Mean of f1_score_macro for the best trial by cross validation: 0.7762
+Median of f1_score_macro for the best trial by cross validation: 0.7781
+Standard Deviation of f1_score_macro for the best trial by cross validation: 0.0044 
+
+#############################################################################################################
+
+ROC AUC metric for optimized model: 0.8864 
+
+PR AUC metric for optimized model: 0.9486
+PR AUC Macro metric for optimized model: 0.9486
+PR AUC Micro metric for optimized model: 0.9486 
+
+F1-Score Binary (BCC) metric for optimized model: 0.8783
+F1-Score Macro metric for optimized model: 0.7735
+F1-Score Micro metric for optimized model: 0.8220 
+
+Precision Binary (BCC) metric for optimized model: 0.8511
+Recall Binary (BCC) metric for optimized model: 0.9073 
+
+Accuracy metric for optimized model: 0.8220
+Balanced Accuracy metric for optimized model: 0.7612 
+
+Log Loss metric for optimized model: 0.3852
+Brier Score metric for optimized model: 0.1229 
+
+#############################################################################################################
+
+ROC AUC metric for standard model: 0.8833 
+
+PR AUC metric for standard model: 0.9431
+PR AUC Macro metric for standard model: 0.9431
+PR AUC Micro metric for standard model: 0.9431 
+
+F1-Score Binary (BCC) metric for standard model: 0.8853
+F1-Score Macro metric for standard model: 0.7710
+F1-Score Micro metric for standard model: 0.8281 
+
+Precision Binary (BCC) metric for standard model: 0.8388
+Recall Binary (BCC) metric for standard model: 0.9373 
+
+Accuracy metric for standard model: 0.8281
+Balanced Accuracy metric for standard model: 0.7503 
+
+Log Loss metric for standard model: 0.3944
+Brier Score metric for standard model: 0.1220 
+

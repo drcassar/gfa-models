@@ -1,0 +1,1646 @@
+=== Initial Model Evaluation on Full Feature Set ===
+Number of features: 600
+
+Mean F1 Score (macro): 0.7692
+Median F1 Score (macro): 0.7686
+Std F1 Score (macro): 0.0053
+Criterion Score (min of mean/median): 0.7686
+Scores across folds: [0.7679916  0.76918904 0.76715592 0.7699817  0.76756321 0.75960836
+ 0.77930881 0.76350331 0.77450903 0.77323069]
+
+Training final model on full training set and evaluating on test set...
+
+===== Evaluation Metrics =====
+Accuracy:              0.8323
+Balanced Accuracy:     0.7650
+ROC AUC:               0.8968
+
+--- PR AUC ---
+PR AUC (micro):        0.9503
+PR AUC (macro):        0.8696
+PR AUC (weighted):     0.9031
+PR AUC (class 0):      0.7890
+PR AUC (class 1):      0.9503
+
+--- F1-Scores ---
+F1-Score (micro):            0.8323
+F1-Score (macro):            0.7821
+F1-Score (weighted):         0.8255
+F1-Score (class 0):          0.6776
+F1-Score (class 1):          0.8866
+
+--- Precision ---
+Precision (micro):     0.8323
+Precision (macro):     0.8114
+Precision (weighted):  0.8273
+Precision (class 0):   0.7732
+Precision (class 1):   0.8497
+
+--- Recall ---
+Recall (micro):        0.8323
+Recall (macro):        0.7650
+Recall (weighted):     0.8323
+Recall (class 0):      0.6030
+Recall (class 1):      0.9269
+
+--- Loss Metrics ---
+Brier Score Loss:      0.1158
+Log Loss:              0.3892
+
+===== Classification Report =====
+              precision    recall  f1-score   support
+
+     Crystal       0.77      0.60      0.68      1509
+       Glass       0.85      0.93      0.89      3654
+
+    accuracy                           0.83      5163
+   macro avg       0.81      0.76      0.78      5163
+weighted avg       0.83      0.83      0.83      5163
+
+
+=== Iteration 1: Selecting feature 1 of 100 ===
+Currently selected features: []
+Remaining features: 600
+Saving results after selecting feature 1: A|vdw_radius_uff|std
+All combinations for iteration 1 saved to 'sfs_results/iteration_1_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 1: A|vdw_radius_uff|std
+Criterion score: 0.6032
+Median F1 score: 0.6037
+Mean F1 score: 0.6032
+Std F1 score: 0.0052
+Iteration time: 1526.92 seconds (25.45 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 2: Selecting feature 2 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std']
+Remaining features: 599
+Saving results after selecting feature 2: W|atomic_radius_rahm|mean
+All combinations for iteration 2 saved to 'sfs_results/iteration_2_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 2: W|atomic_radius_rahm|mean
+Criterion score: 0.6522
+Median F1 score: 0.6522
+Mean F1 score: 0.6523
+Std F1 score: 0.0069
+Iteration time: 2023.65 seconds (33.73 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 3: Selecting feature 3 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean']
+Remaining features: 598
+Saving results after selecting feature 3: W|NpValence|mean
+All combinations for iteration 3 saved to 'sfs_results/iteration_3_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 3: W|NpValence|mean
+Criterion score: 0.7003
+Median F1 score: 0.7024
+Mean F1 score: 0.7003
+Std F1 score: 0.0085
+Iteration time: 1570.00 seconds (26.17 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 4: Selecting feature 4 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean']
+Remaining features: 597
+Saving results after selecting feature 4: A|pettifor_number|sum
+All combinations for iteration 4 saved to 'sfs_results/iteration_4_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 4: A|pettifor_number|sum
+Criterion score: 0.7263
+Median F1 score: 0.7277
+Mean F1 score: 0.7263
+Std F1 score: 0.0066
+Iteration time: 2480.18 seconds (41.34 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 5: Selecting feature 5 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum']
+Remaining features: 596
+Saving results after selecting feature 5: W|FusionEnthalpy|sum
+All combinations for iteration 5 saved to 'sfs_results/iteration_5_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 5: W|FusionEnthalpy|sum
+Criterion score: 0.7410
+Median F1 score: 0.7414
+Mean F1 score: 0.7410
+Std F1 score: 0.0079
+Iteration time: 2177.91 seconds (36.30 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 6: Selecting feature 6 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum']
+Remaining features: 595
+Saving results after selecting feature 6: W|num_oxistates|mean
+All combinations for iteration 6 saved to 'sfs_results/iteration_6_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 6: W|num_oxistates|mean
+Criterion score: 0.7495
+Median F1 score: 0.7515
+Mean F1 score: 0.7495
+Std F1 score: 0.0055
+Iteration time: 2307.70 seconds (38.46 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 7: Selecting feature 7 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean']
+Remaining features: 594
+Saving results after selecting feature 7: A|FusionEnthalpy|mean
+All combinations for iteration 7 saved to 'sfs_results/iteration_7_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 7: A|FusionEnthalpy|mean
+Criterion score: 0.7563
+Median F1 score: 0.7593
+Mean F1 score: 0.7563
+Std F1 score: 0.0062
+Iteration time: 2347.91 seconds (39.13 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 8: Selecting feature 8 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean']
+Remaining features: 593
+Saving results after selecting feature 8: W|NdValence|mean
+All combinations for iteration 8 saved to 'sfs_results/iteration_8_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 8: W|NdValence|mean
+Criterion score: 0.7596
+Median F1 score: 0.7596
+Mean F1 score: 0.7599
+Std F1 score: 0.0065
+Iteration time: 2216.04 seconds (36.93 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 9: Selecting feature 9 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean']
+Remaining features: 592
+Saving results after selecting feature 9: W|NsValence|sum
+All combinations for iteration 9 saved to 'sfs_results/iteration_9_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 9: W|NsValence|sum
+Criterion score: 0.7628
+Median F1 score: 0.7640
+Mean F1 score: 0.7628
+Std F1 score: 0.0073
+Iteration time: 2994.07 seconds (49.90 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 10: Selecting feature 10 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum']
+Remaining features: 591
+Saving results after selecting feature 10: A|GSbandgap|std
+All combinations for iteration 10 saved to 'sfs_results/iteration_10_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 10: A|GSbandgap|std
+Criterion score: 0.7654
+Median F1 score: 0.7659
+Mean F1 score: 0.7654
+Std F1 score: 0.0067
+Iteration time: 2905.14 seconds (48.42 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 11: Selecting feature 11 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std']
+Remaining features: 590
+Saving results after selecting feature 11: W|GSvolume_pa|mean
+All combinations for iteration 11 saved to 'sfs_results/iteration_11_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 11: W|GSvolume_pa|mean
+Criterion score: 0.7671
+Median F1 score: 0.7677
+Mean F1 score: 0.7671
+Std F1 score: 0.0052
+Iteration time: 2771.35 seconds (46.19 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 12: Selecting feature 12 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean']
+Remaining features: 589
+Saving results after selecting feature 12: W|GSbandgap|sum
+All combinations for iteration 12 saved to 'sfs_results/iteration_12_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 12: W|GSbandgap|sum
+Criterion score: 0.7677
+Median F1 score: 0.7684
+Mean F1 score: 0.7677
+Std F1 score: 0.0047
+Iteration time: 2890.81 seconds (48.18 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 13: Selecting feature 13 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum']
+Remaining features: 588
+Saving results after selecting feature 13: A|num_oxistates|std
+All combinations for iteration 13 saved to 'sfs_results/iteration_13_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 13: A|num_oxistates|std
+Criterion score: 0.7706
+Median F1 score: 0.7708
+Mean F1 score: 0.7706
+Std F1 score: 0.0057
+Iteration time: 2955.21 seconds (49.25 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 14: Selecting feature 14 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std']
+Remaining features: 587
+Saving results after selecting feature 14: W|NdUnfilled|max
+All combinations for iteration 14 saved to 'sfs_results/iteration_14_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 14: W|NdUnfilled|max
+Criterion score: 0.7710
+Median F1 score: 0.7710
+Mean F1 score: 0.7714
+Std F1 score: 0.0078
+Iteration time: 2924.72 seconds (48.75 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 15: Selecting feature 15 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max']
+Remaining features: 586
+Saving results after selecting feature 15: W|NpUnfilled|sum
+All combinations for iteration 15 saved to 'sfs_results/iteration_15_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 15: W|NpUnfilled|sum
+Criterion score: 0.7713
+Median F1 score: 0.7723
+Mean F1 score: 0.7713
+Std F1 score: 0.0060
+Iteration time: 2824.15 seconds (47.07 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 16: Selecting feature 16 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum']
+Remaining features: 585
+Saving results after selecting feature 16: A|melting_point|std
+All combinations for iteration 16 saved to 'sfs_results/iteration_16_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 16: A|melting_point|std
+Criterion score: 0.7732
+Median F1 score: 0.7744
+Mean F1 score: 0.7732
+Std F1 score: 0.0072
+Iteration time: 3628.64 seconds (60.48 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 17: Selecting feature 17 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std']
+Remaining features: 584
+Saving results after selecting feature 17: A|NUnfilled|sum
+All combinations for iteration 17 saved to 'sfs_results/iteration_17_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 17: A|NUnfilled|sum
+Criterion score: 0.7738
+Median F1 score: 0.7738
+Mean F1 score: 0.7739
+Std F1 score: 0.0086
+Iteration time: 3544.92 seconds (59.08 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 18: Selecting feature 18 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum']
+Remaining features: 583
+Saving results after selecting feature 18: A|num_oxistates|max
+All combinations for iteration 18 saved to 'sfs_results/iteration_18_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 18: A|num_oxistates|max
+Criterion score: 0.7736
+Median F1 score: 0.7752
+Mean F1 score: 0.7736
+Std F1 score: 0.0057
+Iteration time: 3436.15 seconds (57.27 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 19: Selecting feature 19 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max']
+Remaining features: 582
+Saving results after selecting feature 19: W|covalent_radius_cordero|std
+All combinations for iteration 19 saved to 'sfs_results/iteration_19_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 19: W|covalent_radius_cordero|std
+Criterion score: 0.7743
+Median F1 score: 0.7750
+Mean F1 score: 0.7743
+Std F1 score: 0.0037
+Iteration time: 3355.04 seconds (55.92 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 20: Selecting feature 20 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std']
+Remaining features: 581
+Saving results after selecting feature 20: A|en_Martynov_Batsanov|std
+All combinations for iteration 20 saved to 'sfs_results/iteration_20_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 20: A|en_Martynov_Batsanov|std
+Criterion score: 0.7737
+Median F1 score: 0.7763
+Mean F1 score: 0.7737
+Std F1 score: 0.0058
+Iteration time: 3437.20 seconds (57.29 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 21: Selecting feature 21 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std']
+Remaining features: 580
+Saving results after selecting feature 21: A|en_Allred_Rochow|sum
+All combinations for iteration 21 saved to 'sfs_results/iteration_21_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 21: A|en_Allred_Rochow|sum
+Criterion score: 0.7736
+Median F1 score: 0.7736
+Mean F1 score: 0.7737
+Std F1 score: 0.0065
+Iteration time: 3395.06 seconds (56.58 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 22: Selecting feature 22 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum']
+Remaining features: 579
+Saving results after selecting feature 22: W|en_Ghosh|max
+All combinations for iteration 22 saved to 'sfs_results/iteration_22_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 22: W|en_Ghosh|max
+Criterion score: 0.7739
+Median F1 score: 0.7759
+Mean F1 score: 0.7739
+Std F1 score: 0.0068
+Iteration time: 3312.91 seconds (55.22 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 23: Selecting feature 23 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max']
+Remaining features: 578
+Saving results after selecting feature 23: W|pettifor_number|mean
+All combinations for iteration 23 saved to 'sfs_results/iteration_23_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 23: W|pettifor_number|mean
+Criterion score: 0.7736
+Median F1 score: 0.7745
+Mean F1 score: 0.7736
+Std F1 score: 0.0057
+Iteration time: 3419.46 seconds (56.99 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 24: Selecting feature 24 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean']
+Remaining features: 577
+Saving results after selecting feature 24: A|NpValence|sum
+All combinations for iteration 24 saved to 'sfs_results/iteration_24_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 24: A|NpValence|sum
+Criterion score: 0.7745
+Median F1 score: 0.7745
+Mean F1 score: 0.7750
+Std F1 score: 0.0068
+Iteration time: 3431.46 seconds (57.19 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 25: Selecting feature 25 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum']
+Remaining features: 576
+Saving results after selecting feature 25: A|GSvolume_pa|mean
+All combinations for iteration 25 saved to 'sfs_results/iteration_25_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 25: A|GSvolume_pa|mean
+Criterion score: 0.7753
+Median F1 score: 0.7777
+Mean F1 score: 0.7753
+Std F1 score: 0.0068
+Iteration time: 4039.94 seconds (67.33 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 26: Selecting feature 26 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean']
+Remaining features: 575
+Saving results after selecting feature 26: W|melting_point|mean
+All combinations for iteration 26 saved to 'sfs_results/iteration_26_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 26: W|melting_point|mean
+Criterion score: 0.7743
+Median F1 score: 0.7748
+Mean F1 score: 0.7743
+Std F1 score: 0.0063
+Iteration time: 4023.76 seconds (67.06 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 27: Selecting feature 27 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean']
+Remaining features: 574
+Saving results after selecting feature 27: A|NdValence|sum
+All combinations for iteration 27 saved to 'sfs_results/iteration_27_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 27: A|NdValence|sum
+Criterion score: 0.7747
+Median F1 score: 0.7748
+Mean F1 score: 0.7747
+Std F1 score: 0.0055
+Iteration time: 4073.42 seconds (67.89 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 28: Selecting feature 28 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum']
+Remaining features: 573
+Saving results after selecting feature 28: A|NpValence|mean
+All combinations for iteration 28 saved to 'sfs_results/iteration_28_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 28: A|NpValence|mean
+Criterion score: 0.7751
+Median F1 score: 0.7763
+Mean F1 score: 0.7751
+Std F1 score: 0.0073
+Iteration time: 4019.04 seconds (66.98 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 29: Selecting feature 29 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean']
+Remaining features: 572
+Saving results after selecting feature 29: Sb
+All combinations for iteration 29 saved to 'sfs_results/iteration_29_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 29: Sb
+Criterion score: 0.7757
+Median F1 score: 0.7760
+Mean F1 score: 0.7757
+Std F1 score: 0.0057
+Iteration time: 3914.22 seconds (65.24 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 30: Selecting feature 30 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb']
+Remaining features: 571
+Saving results after selecting feature 30: W|nvalence|sum
+All combinations for iteration 30 saved to 'sfs_results/iteration_30_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 30: W|nvalence|sum
+Criterion score: 0.7753
+Median F1 score: 0.7770
+Mean F1 score: 0.7753
+Std F1 score: 0.0067
+Iteration time: 3799.54 seconds (63.33 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 31: Selecting feature 31 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum']
+Remaining features: 570
+Saving results after selecting feature 31: A|atomic_weight|min
+All combinations for iteration 31 saved to 'sfs_results/iteration_31_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 31: A|atomic_weight|min
+Criterion score: 0.7766
+Median F1 score: 0.7787
+Mean F1 score: 0.7766
+Std F1 score: 0.0066
+Iteration time: 3889.13 seconds (64.82 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 32: Selecting feature 32 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min']
+Remaining features: 569
+Saving results after selecting feature 32: A|density|sum
+All combinations for iteration 32 saved to 'sfs_results/iteration_32_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 32: A|density|sum
+Criterion score: 0.7761
+Median F1 score: 0.7769
+Mean F1 score: 0.7761
+Std F1 score: 0.0053
+Iteration time: 3799.88 seconds (63.33 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 33: Selecting feature 33 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum']
+Remaining features: 568
+Saving results after selecting feature 33: A|pettifor_number|min
+All combinations for iteration 33 saved to 'sfs_results/iteration_33_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 33: A|pettifor_number|min
+Criterion score: 0.7760
+Median F1 score: 0.7768
+Mean F1 score: 0.7760
+Std F1 score: 0.0070
+Iteration time: 3795.95 seconds (63.27 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 34: Selecting feature 34 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min']
+Remaining features: 567
+Saving results after selecting feature 34: Li
+All combinations for iteration 34 saved to 'sfs_results/iteration_34_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 34: Li
+Criterion score: 0.7754
+Median F1 score: 0.7770
+Mean F1 score: 0.7754
+Std F1 score: 0.0060
+Iteration time: 3734.27 seconds (62.24 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 35: Selecting feature 35 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li']
+Remaining features: 566
+Saving results after selecting feature 35: W|GSmagmom|max
+All combinations for iteration 35 saved to 'sfs_results/iteration_35_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 35: W|GSmagmom|max
+Criterion score: 0.7756
+Median F1 score: 0.7764
+Mean F1 score: 0.7756
+Std F1 score: 0.0060
+Iteration time: 3684.41 seconds (61.41 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 36: Selecting feature 36 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max']
+Remaining features: 565
+Saving results after selecting feature 36: Yb
+All combinations for iteration 36 saved to 'sfs_results/iteration_36_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 36: Yb
+Criterion score: 0.7776
+Median F1 score: 0.7783
+Mean F1 score: 0.7776
+Std F1 score: 0.0065
+Iteration time: 4196.05 seconds (69.93 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 37: Selecting feature 37 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb']
+Remaining features: 564
+Saving results after selecting feature 37: W|vdw_radius|mean
+All combinations for iteration 37 saved to 'sfs_results/iteration_37_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 37: W|vdw_radius|mean
+Criterion score: 0.7770
+Median F1 score: 0.7777
+Mean F1 score: 0.7770
+Std F1 score: 0.0075
+Iteration time: 4151.88 seconds (69.20 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 38: Selecting feature 38 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean']
+Remaining features: 563
+Saving results after selecting feature 38: W|NUnfilled|sum
+All combinations for iteration 38 saved to 'sfs_results/iteration_38_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 38: W|NUnfilled|sum
+Criterion score: 0.7769
+Median F1 score: 0.7777
+Mean F1 score: 0.7769
+Std F1 score: 0.0055
+Iteration time: 4220.57 seconds (70.34 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 39: Selecting feature 39 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum']
+Remaining features: 562
+Saving results after selecting feature 39: W|atomic_weight|std
+All combinations for iteration 39 saved to 'sfs_results/iteration_39_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 39: W|atomic_weight|std
+Criterion score: 0.7769
+Median F1 score: 0.7778
+Mean F1 score: 0.7769
+Std F1 score: 0.0062
+Iteration time: 4321.58 seconds (72.03 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 40: Selecting feature 40 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std']
+Remaining features: 561
+Saving results after selecting feature 40: A|dipole_polarizability|min
+All combinations for iteration 40 saved to 'sfs_results/iteration_40_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 40: A|dipole_polarizability|min
+Criterion score: 0.7777
+Median F1 score: 0.7781
+Mean F1 score: 0.7777
+Std F1 score: 0.0063
+Iteration time: 4366.14 seconds (72.77 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 41: Selecting feature 41 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min']
+Remaining features: 560
+Saving results after selecting feature 41: A|NUnfilled|min
+All combinations for iteration 41 saved to 'sfs_results/iteration_41_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 41: A|NUnfilled|min
+Criterion score: 0.7771
+Median F1 score: 0.7774
+Mean F1 score: 0.7771
+Std F1 score: 0.0069
+Iteration time: 4270.95 seconds (71.18 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 42: Selecting feature 42 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min']
+Remaining features: 559
+Saving results after selecting feature 42: A|atomic_weight|max
+All combinations for iteration 42 saved to 'sfs_results/iteration_42_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 42: A|atomic_weight|max
+Criterion score: 0.7769
+Median F1 score: 0.7772
+Mean F1 score: 0.7769
+Std F1 score: 0.0044
+Iteration time: 4239.91 seconds (70.67 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 43: Selecting feature 43 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max']
+Remaining features: 558
+Saving results after selecting feature 43: A|NpUnfilled|max
+All combinations for iteration 43 saved to 'sfs_results/iteration_43_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 43: A|NpUnfilled|max
+Criterion score: 0.7768
+Median F1 score: 0.7771
+Mean F1 score: 0.7768
+Std F1 score: 0.0062
+Iteration time: 4150.00 seconds (69.17 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 44: Selecting feature 44 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max']
+Remaining features: 557
+Saving results after selecting feature 44: A|NpUnfilled|std
+All combinations for iteration 44 saved to 'sfs_results/iteration_44_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 44: A|NpUnfilled|std
+Criterion score: 0.7772
+Median F1 score: 0.7776
+Mean F1 score: 0.7772
+Std F1 score: 0.0059
+Iteration time: 3994.31 seconds (66.57 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 45: Selecting feature 45 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std']
+Remaining features: 556
+Saving results after selecting feature 45: W|atomic_weight|max
+All combinations for iteration 45 saved to 'sfs_results/iteration_45_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 45: W|atomic_weight|max
+Criterion score: 0.7772
+Median F1 score: 0.7777
+Mean F1 score: 0.7772
+Std F1 score: 0.0063
+Iteration time: 3817.89 seconds (63.63 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 46: Selecting feature 46 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max']
+Remaining features: 555
+Saving results after selecting feature 46: W|mendeleev_number|min
+All combinations for iteration 46 saved to 'sfs_results/iteration_46_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 46: W|mendeleev_number|min
+Criterion score: 0.7771
+Median F1 score: 0.7780
+Mean F1 score: 0.7771
+Std F1 score: 0.0050
+Iteration time: 4011.61 seconds (66.86 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 47: Selecting feature 47 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min']
+Remaining features: 554
+Saving results after selecting feature 47: A|en_Allred_Rochow|min
+All combinations for iteration 47 saved to 'sfs_results/iteration_47_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 47: A|en_Allred_Rochow|min
+Criterion score: 0.7771
+Median F1 score: 0.7782
+Mean F1 score: 0.7771
+Std F1 score: 0.0064
+Iteration time: 4181.09 seconds (69.68 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 48: Selecting feature 48 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min']
+Remaining features: 553
+Saving results after selecting feature 48: W|GSenergy_pa|sum
+All combinations for iteration 48 saved to 'sfs_results/iteration_48_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 48: W|GSenergy_pa|sum
+Criterion score: 0.7766
+Median F1 score: 0.7769
+Mean F1 score: 0.7766
+Std F1 score: 0.0048
+Iteration time: 4116.87 seconds (68.61 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 49: Selecting feature 49 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum']
+Remaining features: 552
+Saving results after selecting feature 49: A|covalent_radius_pyykko|mean
+All combinations for iteration 49 saved to 'sfs_results/iteration_49_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 49: A|covalent_radius_pyykko|mean
+Criterion score: 0.7778
+Median F1 score: 0.7783
+Mean F1 score: 0.7778
+Std F1 score: 0.0065
+Iteration time: 4814.66 seconds (80.24 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 50: Selecting feature 50 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean']
+Remaining features: 551
+Saving results after selecting feature 50: W|atomic_number|max
+All combinations for iteration 50 saved to 'sfs_results/iteration_50_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 50: W|atomic_number|max
+Criterion score: 0.7777
+Median F1 score: 0.7784
+Mean F1 score: 0.7777
+Std F1 score: 0.0059
+Iteration time: 4763.11 seconds (79.39 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 51: Selecting feature 51 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max']
+Remaining features: 550
+Saving results after selecting feature 51: La
+All combinations for iteration 51 saved to 'sfs_results/iteration_51_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 51: La
+Criterion score: 0.7767
+Median F1 score: 0.7767
+Mean F1 score: 0.7770
+Std F1 score: 0.0056
+Iteration time: 4833.06 seconds (80.55 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 52: Selecting feature 52 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La']
+Remaining features: 549
+Saving results after selecting feature 52: A|max_ionenergy|std
+All combinations for iteration 52 saved to 'sfs_results/iteration_52_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 52: A|max_ionenergy|std
+Criterion score: 0.7768
+Median F1 score: 0.7769
+Mean F1 score: 0.7768
+Std F1 score: 0.0060
+Iteration time: 4743.01 seconds (79.05 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 53: Selecting feature 53 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std']
+Remaining features: 548
+Saving results after selecting feature 53: A|vdw_radius_alvarez|sum
+All combinations for iteration 53 saved to 'sfs_results/iteration_53_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 53: A|vdw_radius_alvarez|sum
+Criterion score: 0.7762
+Median F1 score: 0.7771
+Mean F1 score: 0.7762
+Std F1 score: 0.0067
+Iteration time: 4704.66 seconds (78.41 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 54: Selecting feature 54 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum']
+Remaining features: 547
+Saving results after selecting feature 54: Rb
+All combinations for iteration 54 saved to 'sfs_results/iteration_54_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 54: Rb
+Criterion score: 0.7766
+Median F1 score: 0.7766
+Mean F1 score: 0.7766
+Std F1 score: 0.0076
+Iteration time: 4735.97 seconds (78.93 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 55: Selecting feature 55 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb']
+Remaining features: 546
+Saving results after selecting feature 55: A|zeff|sum
+All combinations for iteration 55 saved to 'sfs_results/iteration_55_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 55: A|zeff|sum
+Criterion score: 0.7771
+Median F1 score: 0.7773
+Mean F1 score: 0.7771
+Std F1 score: 0.0059
+Iteration time: 4626.01 seconds (77.10 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 56: Selecting feature 56 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum']
+Remaining features: 545
+Saving results after selecting feature 56: In
+All combinations for iteration 56 saved to 'sfs_results/iteration_56_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 56: In
+Criterion score: 0.7765
+Median F1 score: 0.7771
+Mean F1 score: 0.7765
+Std F1 score: 0.0059
+Iteration time: 4593.11 seconds (76.55 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 57: Selecting feature 57 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In']
+Remaining features: 544
+Saving results after selecting feature 57: A|neutrons|min
+All combinations for iteration 57 saved to 'sfs_results/iteration_57_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 57: A|neutrons|min
+Criterion score: 0.7772
+Median F1 score: 0.7778
+Mean F1 score: 0.7772
+Std F1 score: 0.0061
+Iteration time: 4571.79 seconds (76.20 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 58: Selecting feature 58 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min']
+Remaining features: 543
+Saving results after selecting feature 58: W|FusionEnthalpy|mean
+All combinations for iteration 58 saved to 'sfs_results/iteration_58_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 58: W|FusionEnthalpy|mean
+Criterion score: 0.7769
+Median F1 score: 0.7769
+Mean F1 score: 0.7770
+Std F1 score: 0.0054
+Iteration time: 4507.49 seconds (75.12 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 59: Selecting feature 59 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean']
+Remaining features: 542
+Saving results after selecting feature 59: W|num_oxistates|sum
+All combinations for iteration 59 saved to 'sfs_results/iteration_59_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 59: W|num_oxistates|sum
+Criterion score: 0.7771
+Median F1 score: 0.7776
+Mean F1 score: 0.7771
+Std F1 score: 0.0061
+Iteration time: 4470.89 seconds (74.51 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 60: Selecting feature 60 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum']
+Remaining features: 541
+Saving results after selecting feature 60: Ba
+All combinations for iteration 60 saved to 'sfs_results/iteration_60_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 60: Ba
+Criterion score: 0.7777
+Median F1 score: 0.7777
+Mean F1 score: 0.7780
+Std F1 score: 0.0047
+Iteration time: 4460.29 seconds (74.34 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 61: Selecting feature 61 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba']
+Remaining features: 540
+Saving results after selecting feature 61: W|GSbandgap|std
+All combinations for iteration 61 saved to 'sfs_results/iteration_61_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 61: W|GSbandgap|std
+Criterion score: 0.7773
+Median F1 score: 0.7779
+Mean F1 score: 0.7773
+Std F1 score: 0.0055
+Iteration time: 4487.54 seconds (74.79 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 62: Selecting feature 62 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std']
+Remaining features: 539
+Saving results after selecting feature 62: A|FusionEnthalpy|std
+All combinations for iteration 62 saved to 'sfs_results/iteration_62_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 62: A|FusionEnthalpy|std
+Criterion score: 0.7773
+Median F1 score: 0.7777
+Mean F1 score: 0.7773
+Std F1 score: 0.0052
+Iteration time: 4527.64 seconds (75.46 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 63: Selecting feature 63 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std']
+Remaining features: 538
+Saving results after selecting feature 63: A|SpaceGroupNumber|std
+All combinations for iteration 63 saved to 'sfs_results/iteration_63_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 63: A|SpaceGroupNumber|std
+Criterion score: 0.7767
+Median F1 score: 0.7768
+Mean F1 score: 0.7767
+Std F1 score: 0.0058
+Iteration time: 4479.05 seconds (74.65 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 64: Selecting feature 64 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std']
+Remaining features: 537
+Saving results after selecting feature 64: W|en_Allred_Rochow|sum
+All combinations for iteration 64 saved to 'sfs_results/iteration_64_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 64: W|en_Allred_Rochow|sum
+Criterion score: 0.7773
+Median F1 score: 0.7780
+Mean F1 score: 0.7773
+Std F1 score: 0.0055
+Iteration time: 5009.11 seconds (83.49 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 65: Selecting feature 65 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum']
+Remaining features: 536
+Saving results after selecting feature 65: A|en_Ghosh|min
+All combinations for iteration 65 saved to 'sfs_results/iteration_65_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 65: A|en_Ghosh|min
+Criterion score: 0.7776
+Median F1 score: 0.7776
+Mean F1 score: 0.7780
+Std F1 score: 0.0069
+Iteration time: 5142.81 seconds (85.71 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 66: Selecting feature 66 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min']
+Remaining features: 535
+Saving results after selecting feature 66: W|SpaceGroupNumber|sum
+All combinations for iteration 66 saved to 'sfs_results/iteration_66_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 66: W|SpaceGroupNumber|sum
+Criterion score: 0.7777
+Median F1 score: 0.7777
+Mean F1 score: 0.7782
+Std F1 score: 0.0064
+Iteration time: 4935.25 seconds (82.25 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 67: Selecting feature 67 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum']
+Remaining features: 534
+Saving results after selecting feature 67: A|atomic_volume|max
+All combinations for iteration 67 saved to 'sfs_results/iteration_67_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 67: A|atomic_volume|max
+Criterion score: 0.7785
+Median F1 score: 0.7785
+Mean F1 score: 0.7786
+Std F1 score: 0.0051
+Iteration time: 5103.08 seconds (85.05 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 68: Selecting feature 68 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max']
+Remaining features: 533
+Saving results after selecting feature 68: W|vdw_radius_alvarez|sum
+All combinations for iteration 68 saved to 'sfs_results/iteration_68_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 68: W|vdw_radius_alvarez|sum
+Criterion score: 0.7786
+Median F1 score: 0.7796
+Mean F1 score: 0.7786
+Std F1 score: 0.0063
+Iteration time: 5035.04 seconds (83.92 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 69: Selecting feature 69 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum']
+Remaining features: 532
+Saving results after selecting feature 69: O
+All combinations for iteration 69 saved to 'sfs_results/iteration_69_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 69: O
+Criterion score: 0.7786
+Median F1 score: 0.7788
+Mean F1 score: 0.7786
+Std F1 score: 0.0059
+Iteration time: 5078.63 seconds (84.64 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 70: Selecting feature 70 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O']
+Remaining features: 531
+Saving results after selecting feature 70: A|boiling_point|mean
+All combinations for iteration 70 saved to 'sfs_results/iteration_70_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 70: A|boiling_point|mean
+Criterion score: 0.7785
+Median F1 score: 0.7785
+Mean F1 score: 0.7785
+Std F1 score: 0.0047
+Iteration time: 5105.75 seconds (85.10 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 71: Selecting feature 71 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean']
+Remaining features: 530
+Saving results after selecting feature 71: W|en_Tardini_Organov|mean
+All combinations for iteration 71 saved to 'sfs_results/iteration_71_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 71: W|en_Tardini_Organov|mean
+Criterion score: 0.7789
+Median F1 score: 0.7789
+Mean F1 score: 0.7792
+Std F1 score: 0.0048
+Iteration time: 5040.92 seconds (84.02 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 72: Selecting feature 72 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean']
+Remaining features: 529
+Saving results after selecting feature 72: A|GSenergy_pa|min
+All combinations for iteration 72 saved to 'sfs_results/iteration_72_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 72: A|GSenergy_pa|min
+Criterion score: 0.7794
+Median F1 score: 0.7796
+Mean F1 score: 0.7794
+Std F1 score: 0.0057
+Iteration time: 5107.48 seconds (85.12 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 73: Selecting feature 73 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min']
+Remaining features: 528
+Saving results after selecting feature 73: A|atomic_number|sum
+All combinations for iteration 73 saved to 'sfs_results/iteration_73_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 73: A|atomic_number|sum
+Criterion score: 0.7786
+Median F1 score: 0.7790
+Mean F1 score: 0.7786
+Std F1 score: 0.0060
+Iteration time: 5069.59 seconds (84.49 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 74: Selecting feature 74 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum']
+Remaining features: 527
+Saving results after selecting feature 74: A|NdUnfilled|sum
+All combinations for iteration 74 saved to 'sfs_results/iteration_74_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 74: A|NdUnfilled|sum
+Criterion score: 0.7785
+Median F1 score: 0.7790
+Mean F1 score: 0.7785
+Std F1 score: 0.0060
+Iteration time: 5037.36 seconds (83.96 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 75: Selecting feature 75 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum']
+Remaining features: 526
+Saving results after selecting feature 75: A|atomic_weight|std
+All combinations for iteration 75 saved to 'sfs_results/iteration_75_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 75: A|atomic_weight|std
+Criterion score: 0.7786
+Median F1 score: 0.7803
+Mean F1 score: 0.7786
+Std F1 score: 0.0057
+Iteration time: 4964.20 seconds (82.74 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 76: Selecting feature 76 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std']
+Remaining features: 525
+Saving results after selecting feature 76: W|max_ionenergy|min
+All combinations for iteration 76 saved to 'sfs_results/iteration_76_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 76: W|max_ionenergy|min
+Criterion score: 0.7785
+Median F1 score: 0.7785
+Mean F1 score: 0.7787
+Std F1 score: 0.0055
+Iteration time: 4906.46 seconds (81.77 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 77: Selecting feature 77 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min']
+Remaining features: 524
+Saving results after selecting feature 77: W|boiling_point|max
+All combinations for iteration 77 saved to 'sfs_results/iteration_77_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 77: W|boiling_point|max
+Criterion score: 0.7784
+Median F1 score: 0.7785
+Mean F1 score: 0.7784
+Std F1 score: 0.0058
+Iteration time: 4959.68 seconds (82.66 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 78: Selecting feature 78 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max']
+Remaining features: 523
+Saving results after selecting feature 78: A|dipole_polarizability|mean
+All combinations for iteration 78 saved to 'sfs_results/iteration_78_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 78: A|dipole_polarizability|mean
+Criterion score: 0.7782
+Median F1 score: 0.7782
+Mean F1 score: 0.7783
+Std F1 score: 0.0051
+Iteration time: 5078.07 seconds (84.63 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 79: Selecting feature 79 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean']
+Remaining features: 522
+Saving results after selecting feature 79: W|vdw_radius_mm3|std
+All combinations for iteration 79 saved to 'sfs_results/iteration_79_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 79: W|vdw_radius_mm3|std
+Criterion score: 0.7780
+Median F1 score: 0.7780
+Mean F1 score: 0.7783
+Std F1 score: 0.0045
+Iteration time: 5003.97 seconds (83.40 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 80: Selecting feature 80 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std']
+Remaining features: 521
+Saving results after selecting feature 80: A|dipole_polarizability|max
+All combinations for iteration 80 saved to 'sfs_results/iteration_80_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 80: A|dipole_polarizability|max
+Criterion score: 0.7776
+Median F1 score: 0.7776
+Mean F1 score: 0.7777
+Std F1 score: 0.0067
+Iteration time: 5027.62 seconds (83.79 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 81: Selecting feature 81 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max']
+Remaining features: 520
+Saving results after selecting feature 81: W|nvalence|mean
+All combinations for iteration 81 saved to 'sfs_results/iteration_81_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 81: W|nvalence|mean
+Criterion score: 0.7782
+Median F1 score: 0.7788
+Mean F1 score: 0.7782
+Std F1 score: 0.0056
+Iteration time: 5562.83 seconds (92.71 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 82: Selecting feature 82 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean']
+Remaining features: 519
+Saving results after selecting feature 82: W|NfUnfilled|std
+All combinations for iteration 82 saved to 'sfs_results/iteration_82_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 82: W|NfUnfilled|std
+Criterion score: 0.7783
+Median F1 score: 0.7783
+Mean F1 score: 0.7785
+Std F1 score: 0.0053
+Iteration time: 5595.85 seconds (93.26 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 83: Selecting feature 83 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std']
+Remaining features: 518
+Saving results after selecting feature 83: W|en_Ghosh|sum
+All combinations for iteration 83 saved to 'sfs_results/iteration_83_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 83: W|en_Ghosh|sum
+Criterion score: 0.7785
+Median F1 score: 0.7792
+Mean F1 score: 0.7785
+Std F1 score: 0.0060
+Iteration time: 5647.47 seconds (94.12 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 84: Selecting feature 84 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum']
+Remaining features: 517
+Saving results after selecting feature 84: Cs
+All combinations for iteration 84 saved to 'sfs_results/iteration_84_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 84: Cs
+Criterion score: 0.7782
+Median F1 score: 0.7783
+Mean F1 score: 0.7782
+Std F1 score: 0.0068
+Iteration time: 5617.48 seconds (93.62 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 85: Selecting feature 85 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs']
+Remaining features: 516
+Saving results after selecting feature 85: Cu
+All combinations for iteration 85 saved to 'sfs_results/iteration_85_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 85: Cu
+Criterion score: 0.7785
+Median F1 score: 0.7789
+Mean F1 score: 0.7785
+Std F1 score: 0.0043
+Iteration time: 5533.74 seconds (92.23 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 86: Selecting feature 86 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu']
+Remaining features: 515
+Saving results after selecting feature 86: W|GSenergy_pa|min
+All combinations for iteration 86 saved to 'sfs_results/iteration_86_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 86: W|GSenergy_pa|min
+Criterion score: 0.7781
+Median F1 score: 0.7781
+Mean F1 score: 0.7781
+Std F1 score: 0.0063
+Iteration time: 5526.75 seconds (92.11 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 87: Selecting feature 87 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min']
+Remaining features: 514
+Saving results after selecting feature 87: A|GSmagmom|sum
+All combinations for iteration 87 saved to 'sfs_results/iteration_87_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 87: A|GSmagmom|sum
+Criterion score: 0.7787
+Median F1 score: 0.7789
+Mean F1 score: 0.7787
+Std F1 score: 0.0067
+Iteration time: 5826.80 seconds (97.11 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 88: Selecting feature 88 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum']
+Remaining features: 513
+Saving results after selecting feature 88: A|covalent_radius_pyykko|min
+All combinations for iteration 88 saved to 'sfs_results/iteration_88_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 88: A|covalent_radius_pyykko|min
+Criterion score: 0.7781
+Median F1 score: 0.7781
+Mean F1 score: 0.7787
+Std F1 score: 0.0068
+Iteration time: 5761.94 seconds (96.03 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 89: Selecting feature 89 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min']
+Remaining features: 512
+Saving results after selecting feature 89: A|density|max
+All combinations for iteration 89 saved to 'sfs_results/iteration_89_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 89: A|density|max
+Criterion score: 0.7780
+Median F1 score: 0.7780
+Mean F1 score: 0.7783
+Std F1 score: 0.0061
+Iteration time: 5623.69 seconds (93.73 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 90: Selecting feature 90 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max']
+Remaining features: 511
+Saving results after selecting feature 90: W|NpUnfilled|min
+All combinations for iteration 90 saved to 'sfs_results/iteration_90_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 90: W|NpUnfilled|min
+Criterion score: 0.7779
+Median F1 score: 0.7782
+Mean F1 score: 0.7779
+Std F1 score: 0.0056
+Iteration time: 5592.12 seconds (93.20 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 91: Selecting feature 91 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min']
+Remaining features: 510
+Saving results after selecting feature 91: Na
+All combinations for iteration 91 saved to 'sfs_results/iteration_91_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 91: Na
+Criterion score: 0.7782
+Median F1 score: 0.7782
+Mean F1 score: 0.7784
+Std F1 score: 0.0062
+Iteration time: 5443.97 seconds (90.73 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 92: Selecting feature 92 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na']
+Remaining features: 509
+Saving results after selecting feature 92: Pb
+All combinations for iteration 92 saved to 'sfs_results/iteration_92_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 92: Pb
+Criterion score: 0.7782
+Median F1 score: 0.7784
+Mean F1 score: 0.7782
+Std F1 score: 0.0057
+Iteration time: 5370.55 seconds (89.51 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 93: Selecting feature 93 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb']
+Remaining features: 508
+Saving results after selecting feature 93: V
+All combinations for iteration 93 saved to 'sfs_results/iteration_93_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 93: V
+Criterion score: 0.7779
+Median F1 score: 0.7779
+Mean F1 score: 0.7781
+Std F1 score: 0.0066
+Iteration time: 5284.71 seconds (88.08 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 94: Selecting feature 94 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V']
+Remaining features: 507
+Saving results after selecting feature 94: W|en_Martynov_Batsanov|min
+All combinations for iteration 94 saved to 'sfs_results/iteration_94_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 94: W|en_Martynov_Batsanov|min
+Criterion score: 0.7780
+Median F1 score: 0.7780
+Mean F1 score: 0.7782
+Std F1 score: 0.0056
+Iteration time: 5282.24 seconds (88.04 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 95: Selecting feature 95 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min']
+Remaining features: 506
+Saving results after selecting feature 95: W|en_Gordy|max
+All combinations for iteration 95 saved to 'sfs_results/iteration_95_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 95: W|en_Gordy|max
+Criterion score: 0.7772
+Median F1 score: 0.7772
+Mean F1 score: 0.7776
+Std F1 score: 0.0057
+Iteration time: 5339.63 seconds (88.99 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 96: Selecting feature 96 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max']
+Remaining features: 505
+Saving results after selecting feature 96: W|atomic_radius_rahm|sum
+All combinations for iteration 96 saved to 'sfs_results/iteration_96_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 96: W|atomic_radius_rahm|sum
+Criterion score: 0.7783
+Median F1 score: 0.7788
+Mean F1 score: 0.7783
+Std F1 score: 0.0075
+Iteration time: 5328.56 seconds (88.81 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 97: Selecting feature 97 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum']
+Remaining features: 504
+Saving results after selecting feature 97: W|num_oxistates|min
+All combinations for iteration 97 saved to 'sfs_results/iteration_97_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 97: W|num_oxistates|min
+Criterion score: 0.7776
+Median F1 score: 0.7776
+Mean F1 score: 0.7777
+Std F1 score: 0.0059
+Iteration time: 5383.07 seconds (89.72 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 98: Selecting feature 98 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum', 'W|num_oxistates|min']
+Remaining features: 503
+Saving results after selecting feature 98: Tm
+All combinations for iteration 98 saved to 'sfs_results/iteration_98_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 98: Tm
+Criterion score: 0.7777
+Median F1 score: 0.7779
+Mean F1 score: 0.7777
+Std F1 score: 0.0065
+Iteration time: 5409.64 seconds (90.16 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 99: Selecting feature 99 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum', 'W|num_oxistates|min', 'Tm']
+Remaining features: 502
+Saving results after selecting feature 99: W|en_Cottrell_Sutton|max
+All combinations for iteration 99 saved to 'sfs_results/iteration_99_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 99: W|en_Cottrell_Sutton|max
+Criterion score: 0.7773
+Median F1 score: 0.7789
+Mean F1 score: 0.7773
+Std F1 score: 0.0059
+Iteration time: 5301.40 seconds (88.36 minutes)
+--------------------------------------------------------------------------------
+
+=== Iteration 100: Selecting feature 100 of 100 ===
+Currently selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum', 'W|num_oxistates|min', 'Tm', 'W|en_Cottrell_Sutton|max']
+Remaining features: 501
+Saving results after selecting feature 100: A|mass_number|mean
+All combinations for iteration 100 saved to 'sfs_results/iteration_100_all_combinations.xlsx'
+Best features progressive file updated: 'sfs_results/best_features_progressive.xlsx'
+Selected feature 100: A|mass_number|mean
+Criterion score: 0.7775
+Median F1 score: 0.7775
+Mean F1 score: 0.7776
+Std F1 score: 0.0064
+Iteration time: 5878.20 seconds (97.97 minutes)
+--------------------------------------------------------------------------------
+
+=== Saving ALL combinations across all iterations ===
+Complete combinations file saved to 'sfs_results/all_combinations_complete.xlsx'
+
+=== Final Results ===
+Final results saved to 'sfs_results/sfs_final_results.xlsx'
+
+=== Final Selected Features ===
+                added_feature  median_score  ...  std_score  criterion_score
+0        A|vdw_radius_uff|std      0.603702  ...   0.005222         0.603238
+1   W|atomic_radius_rahm|mean      0.652155  ...   0.006903         0.652155
+2            W|NpValence|mean      0.702416  ...   0.008470         0.700263
+3       A|pettifor_number|sum      0.727688  ...   0.006567         0.726312
+4        W|FusionEnthalpy|sum      0.741391  ...   0.007926         0.740978
+..                        ...           ...  ...        ...              ...
+95   W|atomic_radius_rahm|sum      0.778819  ...   0.007452         0.778323
+96        W|num_oxistates|min      0.777646  ...   0.005919         0.777646
+97                         Tm      0.777855  ...   0.006450         0.777734
+98   W|en_Cottrell_Sutton|max      0.778882  ...   0.005917         0.777333
+99         A|mass_number|mean      0.777524  ...   0.006377         0.777524
+
+[100 rows x 5 columns]
+
+Selected 100 features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum', 'W|num_oxistates|min', 'Tm', 'W|en_Cottrell_Sutton|max', 'A|mass_number|mean']
+===== Evaluation Metrics =====
+Accuracy:              0.8379
+Balanced Accuracy:     0.7730
+ROC AUC:               0.9012
+
+--- PR AUC ---
+PR AUC (micro):        0.9530
+PR AUC (macro):        0.8764
+PR AUC (weighted):     0.9082
+PR AUC (class 0):      0.7999
+PR AUC (class 1):      0.9530
+
+--- F1-Scores ---
+F1-Score (micro):            0.8379
+F1-Score (macro):            0.7901
+F1-Score (weighted):         0.8317
+F1-Score (class 0):          0.6899
+F1-Score (class 1):          0.8903
+
+--- Precision ---
+Precision (micro):     0.8379
+Precision (macro):     0.8184
+Precision (weighted):  0.8334
+Precision (class 0):   0.7824
+Precision (class 1):   0.8545
+
+--- Recall ---
+Recall (micro):        0.8379
+Recall (macro):        0.7730
+Recall (weighted):     0.8379
+Recall (class 0):      0.6170
+Recall (class 1):      0.9291
+
+--- Loss Metrics ---
+Brier Score Loss:      0.1131
+Log Loss:              0.3628
+
+===== Classification Report =====
+              precision    recall  f1-score   support
+
+     Crystal       0.78      0.62      0.69      1509
+       Glass       0.85      0.93      0.89      3654
+
+    accuracy                           0.84      5163
+   macro avg       0.82      0.77      0.79      5163
+weighted avg       0.83      0.84      0.83      5163
+
+Final model evaluation saved to 'sfs_results/final_model_evaluation.xlsx'
+
+=== EXECUTION SUMMARY ===
+Total iterations: 100
+Total combinations tested: 0
+Average combinations per iteration: 0.0
+Final number of selected features: 100
+Final selected features: ['A|vdw_radius_uff|std', 'W|atomic_radius_rahm|mean', 'W|NpValence|mean', 'A|pettifor_number|sum', 'W|FusionEnthalpy|sum', 'W|num_oxistates|mean', 'A|FusionEnthalpy|mean', 'W|NdValence|mean', 'W|NsValence|sum', 'A|GSbandgap|std', 'W|GSvolume_pa|mean', 'W|GSbandgap|sum', 'A|num_oxistates|std', 'W|NdUnfilled|max', 'W|NpUnfilled|sum', 'A|melting_point|std', 'A|NUnfilled|sum', 'A|num_oxistates|max', 'W|covalent_radius_cordero|std', 'A|en_Martynov_Batsanov|std', 'A|en_Allred_Rochow|sum', 'W|en_Ghosh|max', 'W|pettifor_number|mean', 'A|NpValence|sum', 'A|GSvolume_pa|mean', 'W|melting_point|mean', 'A|NdValence|sum', 'A|NpValence|mean', 'Sb', 'W|nvalence|sum', 'A|atomic_weight|min', 'A|density|sum', 'A|pettifor_number|min', 'Li', 'W|GSmagmom|max', 'Yb', 'W|vdw_radius|mean', 'W|NUnfilled|sum', 'W|atomic_weight|std', 'A|dipole_polarizability|min', 'A|NUnfilled|min', 'A|atomic_weight|max', 'A|NpUnfilled|max', 'A|NpUnfilled|std', 'W|atomic_weight|max', 'W|mendeleev_number|min', 'A|en_Allred_Rochow|min', 'W|GSenergy_pa|sum', 'A|covalent_radius_pyykko|mean', 'W|atomic_number|max', 'La', 'A|max_ionenergy|std', 'A|vdw_radius_alvarez|sum', 'Rb', 'A|zeff|sum', 'In', 'A|neutrons|min', 'W|FusionEnthalpy|mean', 'W|num_oxistates|sum', 'Ba', 'W|GSbandgap|std', 'A|FusionEnthalpy|std', 'A|SpaceGroupNumber|std', 'W|en_Allred_Rochow|sum', 'A|en_Ghosh|min', 'W|SpaceGroupNumber|sum', 'A|atomic_volume|max', 'W|vdw_radius_alvarez|sum', 'O', 'A|boiling_point|mean', 'W|en_Tardini_Organov|mean', 'A|GSenergy_pa|min', 'A|atomic_number|sum', 'A|NdUnfilled|sum', 'A|atomic_weight|std', 'W|max_ionenergy|min', 'W|boiling_point|max', 'A|dipole_polarizability|mean', 'W|vdw_radius_mm3|std', 'A|dipole_polarizability|max', 'W|nvalence|mean', 'W|NfUnfilled|std', 'W|en_Ghosh|sum', 'Cs', 'Cu', 'W|GSenergy_pa|min', 'A|GSmagmom|sum', 'A|covalent_radius_pyykko|min', 'A|density|max', 'W|NpUnfilled|min', 'Na', 'Pb', 'V', 'W|en_Martynov_Batsanov|min', 'W|en_Gordy|max', 'W|atomic_radius_rahm|sum', 'W|num_oxistates|min', 'Tm', 'W|en_Cottrell_Sutton|max', 'A|mass_number|mean']
+
+=== TIMING INFORMATION ===
+Total execution time: 430035.56 seconds (7167.26 minutes)
+Average time per iteration: 4299.23 seconds
+Total time spent on iterations: 429922.97 seconds
+Time per iteration breakdown:
+  Iteration 1: 1526.92 seconds (25.45 minutes)
+  Iteration 2: 2023.65 seconds (33.73 minutes)
+  Iteration 3: 1570.00 seconds (26.17 minutes)
+  Iteration 4: 2480.18 seconds (41.34 minutes)
+  Iteration 5: 2177.91 seconds (36.30 minutes)
+  Iteration 6: 2307.70 seconds (38.46 minutes)
+  Iteration 7: 2347.91 seconds (39.13 minutes)
+  Iteration 8: 2216.04 seconds (36.93 minutes)
+  Iteration 9: 2994.07 seconds (49.90 minutes)
+  Iteration 10: 2905.14 seconds (48.42 minutes)
+  Iteration 11: 2771.35 seconds (46.19 minutes)
+  Iteration 12: 2890.81 seconds (48.18 minutes)
+  Iteration 13: 2955.21 seconds (49.25 minutes)
+  Iteration 14: 2924.72 seconds (48.75 minutes)
+  Iteration 15: 2824.15 seconds (47.07 minutes)
+  Iteration 16: 3628.64 seconds (60.48 minutes)
+  Iteration 17: 3544.92 seconds (59.08 minutes)
+  Iteration 18: 3436.15 seconds (57.27 minutes)
+  Iteration 19: 3355.04 seconds (55.92 minutes)
+  Iteration 20: 3437.20 seconds (57.29 minutes)
+  Iteration 21: 3395.06 seconds (56.58 minutes)
+  Iteration 22: 3312.91 seconds (55.22 minutes)
+  Iteration 23: 3419.46 seconds (56.99 minutes)
+  Iteration 24: 3431.46 seconds (57.19 minutes)
+  Iteration 25: 4039.94 seconds (67.33 minutes)
+  Iteration 26: 4023.76 seconds (67.06 minutes)
+  Iteration 27: 4073.42 seconds (67.89 minutes)
+  Iteration 28: 4019.04 seconds (66.98 minutes)
+  Iteration 29: 3914.22 seconds (65.24 minutes)
+  Iteration 30: 3799.54 seconds (63.33 minutes)
+  Iteration 31: 3889.13 seconds (64.82 minutes)
+  Iteration 32: 3799.88 seconds (63.33 minutes)
+  Iteration 33: 3795.95 seconds (63.27 minutes)
+  Iteration 34: 3734.27 seconds (62.24 minutes)
+  Iteration 35: 3684.41 seconds (61.41 minutes)
+  Iteration 36: 4196.05 seconds (69.93 minutes)
+  Iteration 37: 4151.88 seconds (69.20 minutes)
+  Iteration 38: 4220.57 seconds (70.34 minutes)
+  Iteration 39: 4321.58 seconds (72.03 minutes)
+  Iteration 40: 4366.14 seconds (72.77 minutes)
+  Iteration 41: 4270.95 seconds (71.18 minutes)
+  Iteration 42: 4239.91 seconds (70.67 minutes)
+  Iteration 43: 4150.00 seconds (69.17 minutes)
+  Iteration 44: 3994.31 seconds (66.57 minutes)
+  Iteration 45: 3817.89 seconds (63.63 minutes)
+  Iteration 46: 4011.61 seconds (66.86 minutes)
+  Iteration 47: 4181.09 seconds (69.68 minutes)
+  Iteration 48: 4116.87 seconds (68.61 minutes)
+  Iteration 49: 4814.66 seconds (80.24 minutes)
+  Iteration 50: 4763.11 seconds (79.39 minutes)
+  Iteration 51: 4833.06 seconds (80.55 minutes)
+  Iteration 52: 4743.01 seconds (79.05 minutes)
+  Iteration 53: 4704.66 seconds (78.41 minutes)
+  Iteration 54: 4735.97 seconds (78.93 minutes)
+  Iteration 55: 4626.01 seconds (77.10 minutes)
+  Iteration 56: 4593.11 seconds (76.55 minutes)
+  Iteration 57: 4571.79 seconds (76.20 minutes)
+  Iteration 58: 4507.49 seconds (75.12 minutes)
+  Iteration 59: 4470.89 seconds (74.51 minutes)
+  Iteration 60: 4460.29 seconds (74.34 minutes)
+  Iteration 61: 4487.54 seconds (74.79 minutes)
+  Iteration 62: 4527.64 seconds (75.46 minutes)
+  Iteration 63: 4479.05 seconds (74.65 minutes)
+  Iteration 64: 5009.11 seconds (83.49 minutes)
+  Iteration 65: 5142.81 seconds (85.71 minutes)
+  Iteration 66: 4935.25 seconds (82.25 minutes)
+  Iteration 67: 5103.08 seconds (85.05 minutes)
+  Iteration 68: 5035.04 seconds (83.92 minutes)
+  Iteration 69: 5078.63 seconds (84.64 minutes)
+  Iteration 70: 5105.75 seconds (85.10 minutes)
+  Iteration 71: 5040.92 seconds (84.02 minutes)
+  Iteration 72: 5107.48 seconds (85.12 minutes)
+  Iteration 73: 5069.59 seconds (84.49 minutes)
+  Iteration 74: 5037.36 seconds (83.96 minutes)
+  Iteration 75: 4964.20 seconds (82.74 minutes)
+  Iteration 76: 4906.46 seconds (81.77 minutes)
+  Iteration 77: 4959.68 seconds (82.66 minutes)
+  Iteration 78: 5078.07 seconds (84.63 minutes)
+  Iteration 79: 5003.97 seconds (83.40 minutes)
+  Iteration 80: 5027.62 seconds (83.79 minutes)
+  Iteration 81: 5562.83 seconds (92.71 minutes)
+  Iteration 82: 5595.85 seconds (93.26 minutes)
+  Iteration 83: 5647.47 seconds (94.12 minutes)
+  Iteration 84: 5617.48 seconds (93.62 minutes)
+  Iteration 85: 5533.74 seconds (92.23 minutes)
+  Iteration 86: 5526.75 seconds (92.11 minutes)
+  Iteration 87: 5826.80 seconds (97.11 minutes)
+  Iteration 88: 5761.94 seconds (96.03 minutes)
+  Iteration 89: 5623.69 seconds (93.73 minutes)
+  Iteration 90: 5592.12 seconds (93.20 minutes)
+  Iteration 91: 5443.97 seconds (90.73 minutes)
+  Iteration 92: 5370.55 seconds (89.51 minutes)
+  Iteration 93: 5284.71 seconds (88.08 minutes)
+  Iteration 94: 5282.24 seconds (88.04 minutes)
+  Iteration 95: 5339.63 seconds (88.99 minutes)
+  Iteration 96: 5328.56 seconds (88.81 minutes)
+  Iteration 97: 5383.07 seconds (89.72 minutes)
+  Iteration 98: 5409.64 seconds (90.16 minutes)
+  Iteration 99: 5301.40 seconds (88.36 minutes)
+  Iteration 100: 5878.20 seconds (97.97 minutes)
+
+Timing information saved to 'sfs_results/execution_timing.xlsx'
