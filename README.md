@@ -66,10 +66,10 @@ python src/models/train/train_RF_CHEM.py
 │
 ├── data/
 │   ├── interim/                   <- Intermediate transformed data.
-│   ├── processed/                 <- Final canonical datasets for modeling (CHEM, FEATENG, etc.).
+│   ├── processed/                 <- Final canonical datasets for modeling.
 │   ├── raw/                       <- The original, immutable data dump.
 │   └── support/                   <- Auxiliary files (train/test split indices, translations).
-│       ├── analysis_table/        <- Output tables (metrics comparisons, feature statistics).
+│       ├── analysis_table/        <- Output tables (metrics comparisons and feature statistics).
 │       ├── explanation_shap/      <- Serialized SHAP explainers (joblib files).
 │       └── model_parameters/      <- JSON files containing the optimized hyperparameters.
 │
