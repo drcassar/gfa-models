@@ -1,10 +1,12 @@
-# Ignorar dados e modelos pesados
+# Ignore heavy data and models
+data/interim/GF_binary_feature_engineering.pkl.zip
+data/processed/GFA_binary_processed.pkl.zip
 *.pkl
 *.joblib
-*.zip
-*.db
+# *.zip
+# *.db
 
-# Ignorar arquivos temporários do Python
+# Ignore Python temporary files
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
