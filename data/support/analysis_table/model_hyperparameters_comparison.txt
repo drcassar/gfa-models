@@ -1,0 +1,15 @@
+| Hyperparameter        | Search space                             |               CHEM |  FEATENG |                 GS |    FEATENG+GS |
+| <l>                   | <l>                                      |                <r> |      <r> |                <r> |           <r> |
+|-----------------------+------------------------------------------+--------------------+----------+--------------------+---------------|
+| n_estimators          | {10, 11, ..., 1000}                      |                722 |      719 |                419 |           384 |
+| criterion             | {gini, entropy, log_loss}                |               gini | log_loss |           log_loss |      log_loss |
+| min_samples_split     | {2, 3, ..., 20}                          |                  3 |        7 |                 15 |             8 |
+| min_samples_leaf      | {1, 2, ..., 20}                          |                  1 |        2 |                  6 |             1 |
+| max_depth             | {None} $\cup$ {1, 2, ..., 100}           |                 90 |     None |                 45 |          None |
+| max_features          | {sqrt, log2, None} $\cup$ [\num{e-5}, 1] |               None |     sqrt |      \num{2.18e-5} | \num{4.97e-1} |
+| max_leaf_nodes        | {None} $\cup$ {10, 11, ..., 1000}        |               None |     None |               None |          None |
+| min_impurity_decrease | {0} $\cup$ [\num{e-5}, 1]                |                  0 |        0 |                  0 | \num{9.91e-5} |
+| class_weight          | {None, balanced, balanced_subsample}     | balanced_subsample | balanced | balanced_subsample |      balanced |
+| ccp_alpha             | {0} $\cup$ [\num{e-5}, 1]                |      \num{4.43e-5} |        0 |      \num{1.82e-5} | \num{1.30e-4} |
+| max_samples           | {None} $\cup$ [\num{e-4}, 1]             |               None |     None |               None |          None |
+|-----------------------+------------------------------------------+--------------------+----------+--------------------+---------------|
