@@ -58,12 +58,12 @@ if __name__ == "__main__":
 
     LIMIT = 0.01
 
-    min_dist = cdist(x_train, x_test, "cityblock").min(axis=0)
+    treino_teste = cdist(x_train, x_test, "cityblock").min(axis=0)
 
-    mask = min_dist > LIMIT
-    plot_data = min_dist[mask]
+    mask = treino_teste > LIMIT
+    plot_data = treino_teste[mask]
 
-    print(len(plot_data) / len(min_dist) * 100)
+    print(len(plot_data) / len(treino_teste) * 100)
 
     histplot(plot_data, "manhattan histogram")
 
@@ -71,19 +71,15 @@ if __name__ == "__main__":
     #                Comparando treino-treino com treino-teste                #
     ###########################################################################
 
-    treino_treino = cdist(x_train, x_train, "cityblock")
-    mask = treino_treino != 0
-    treino_treino = treino_treino[mask].min(axis=0)
-
-    treino_teste = cdist(x_train, x_test, "cityblock").min(axis=0)
-
-    histplot(treino_treino, "manhattan treino_treino")
-    histplot(treino_teste, "manhattan treino_teste")
+    # # Muito lento!!
+    # treino_treino = cdist(x_train, x_train, "cityblock")
+    # mask = treino_treino != 0
+    # treino_treino = treino_treino[mask].min(axis=0)
 
     nbrs = NearestNeighbors(n_neighbors=1, metric="manhattan", n_jobs=-1)
     nbrs.fit(x_train)
 
-    treino_treino, indices = nbrs.kneighbors()  # (n_samples, 1) distances
+    treino_treino, indices = nbrs.kneighbors()
     treino_treino = treino_treino.ravel()
 
     df = pd.concat(
@@ -93,6 +89,9 @@ if __name__ == "__main__":
         ],
         ignore_index=True,
     )
+
+    histplot(treino_treino, "manhattan treino_treino")
+    histplot(treino_teste, "manhattan treino_teste")
 
     ###########################################################################
     #                                   Plot                                  #
@@ -129,8 +128,6 @@ if __name__ == "__main__":
     ###########################################################################
     #                         Kolmogorov-Smirnov test                         #
     ###########################################################################
-
-    print(len(treino_treino), len(treino_teste))
 
     result = kstest(treino_treino, treino_teste)
     print(result)
