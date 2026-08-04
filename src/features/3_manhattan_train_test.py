@@ -67,14 +67,11 @@ if __name__ == "__main__":
 
     histplot(plot_data, "manhattan histogram")
 
+    np.save(SPLIT_DATA_DIR + "test_data_leak_indices.npy", mask)
+
     ###########################################################################
     #                Comparando treino-treino com treino-teste                #
     ###########################################################################
-
-    # # Muito lento!!
-    # treino_treino = cdist(x_train, x_train, "cityblock")
-    # mask = treino_treino != 0
-    # treino_treino = treino_treino[mask].min(axis=0)
 
     nbrs = NearestNeighbors(n_neighbors=1, metric="manhattan", n_jobs=-1)
     nbrs.fit(x_train)
