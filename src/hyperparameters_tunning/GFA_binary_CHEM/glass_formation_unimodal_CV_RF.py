@@ -1,15 +1,19 @@
-#############################################################################################################
-#                                      Importing Libraries and Resources                                    #
-#############################################################################################################
+###################################################################################
+#           Importing Libraries and Resources                                    #
+###################################################################################
 
 import os
 import sys
 import time
+from pprint import pprint
 
 import joblib
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from optuna import Trial, create_study
+from sklearn.calibration import CalibratedClassifierCV, calibration_curve
+from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
     accuracy_score,
@@ -41,15 +45,102 @@ def name_print(name):
         )
 
     print(
-        f"#############################################################################################################\n"
-        f"#{' ' * space_size_left}{                           name                           }{' ' * space_size_right}#\n"
-        f"#############################################################################################################\n"
+        f"#####################################################################\n"
+        f"#{' ' * space_size_left}{name}{' ' * space_size_right}#\n"
+        f"#####################################################################\n"
     )
 
 
-#############################################################################################################
-#                                                    Constants                                              #
-#############################################################################################################
+def evaluate_binary_model(model, X_test, y_test, classe=1):
+    """
+    Evaluate a binary classifier and return a dictionary of metrics.
+    'classe' defines which class is treated as the positive class.
+    """
+
+    y_pred = model.predict(X_test)
+    y_pred_proba_all = model.predict_proba(X_test)
+    y_pred_proba = y_pred_proba_all[:, classe]
+
+    # ROC-AUC: no pos_label param in sklearn, so flip y_test when classe=0
+    # so that the chosen class is always the positive one in the AUC computation.
+    # Result should be ~0.875 for both classes (ROC-AUC is symmetric).
+    y_test_roc = y_test if classe == 1 else (1 - y_test)
+
+    metrics = {
+        # --- Ranking metrics ---
+        "roc_auc": roc_auc_score(y_test_roc, y_pred_proba),
+        "pr_auc": average_precision_score(y_test, y_pred_proba, pos_label=classe),
+        "pr_auc_macro": average_precision_score(
+            y_test, y_pred_proba, average="macro", pos_label=classe
+        ),
+        "pr_auc_micro": average_precision_score(
+            y_test, y_pred_proba, average="micro", pos_label=classe
+        ),
+        # --- Threshold-based metrics ---
+        "f1": f1_score(y_test, y_pred, pos_label=classe),
+        "f1_macro": f1_score(y_test, y_pred, average="macro"),
+        "f1_micro": f1_score(y_test, y_pred, average="micro"),
+        "precision": precision_score(y_test, y_pred, pos_label=classe, zero_division=0),
+        "recall": recall_score(y_test, y_pred, pos_label=classe),
+        "accuracy": accuracy_score(y_test, y_pred),
+        "balanced_accuracy": balanced_accuracy_score(y_test, y_pred),
+        # --- Calibration metrics ---
+        "log_loss": log_loss(y_test, y_pred_proba_all),
+        "brier_score": brier_score_loss(y_test, y_pred_proba, pos_label=classe),
+    }
+
+    return metrics
+
+
+def plot_reliability_diagram_and_ece(
+    model, X_test, y_test, n_bins=10, model_name="Model"
+):
+    """
+    Plots the reliability diagram (calibration curve) and computes ECE.
+    """
+    y_prob = model.predict_proba(X_test)[:, 1]  # P(glass)
+
+    # Calibration curve
+    prob_true, prob_pred = calibration_curve(
+        y_test, y_prob, n_bins=n_bins, strategy="uniform"
+    )
+
+    # Expected Calibration Error (ECE)
+    # Weighted average of |accuracy - confidence| per bin
+    bin_edges = np.linspace(0, 1, n_bins + 1)
+    ece = 0.0
+    for i in range(n_bins):
+        in_bin = (y_prob >= bin_edges[i]) & (y_prob < bin_edges[i + 1])
+        if in_bin.sum() > 0:
+            bin_confidence = y_prob[in_bin].mean()
+            bin_accuracy = y_test[in_bin].mean()
+            bin_weight = in_bin.sum() / len(y_prob)
+            ece += bin_weight * abs(bin_accuracy - bin_confidence)
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.plot([0, 1], [0, 1], "k--", label="Perfect calibration")
+    ax.plot(prob_pred, prob_true, "s-", label=f"{model_name} (ECE={ece:.4f})")
+    ax.set_xlabel("Mean predicted probability (confidence)")
+    ax.set_ylabel("Fraction of positives (accuracy)")
+    ax.set_title(f"Reliability Diagram — {model_name}")
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(f"reliability_{model_name}.png", dpi=150)
+    plt.show()
+
+    print(f"ECE ({model_name}): {ece:.4f}")
+    print(f"Brier Score ({model_name}): {brier_score_loss(y_test, y_prob):.4f}")
+
+    return ece
+
+
+###############################################################################
+#       Constants                                  #
+###############################################################################
+
+SEARCH = False
+STANDARD_MODEL = False
 
 RANDOM_SEED = 0
 TEST_SPLIT_SIZE = 0.1
@@ -57,7 +148,7 @@ VAL_SPLIT_SIZE = (
     (1 - TEST_SPLIT_SIZE) * TEST_SPLIT_SIZE / (1 - TEST_SPLIT_SIZE)
 )  # test size = val sisze
 NUM_FOLD = 5
-N_TRIALS = 5
+N_TRIALS = 2000
 N_TRIALS_CROSS_VALIDATION = (
     int(N_TRIALS * 0.05) if N_TRIALS >= 20 else 1
 )  # 5% of the best trials
@@ -73,9 +164,9 @@ OPTIMIZER = "TPESampler"  # 'RandomSampler' # 'TPESampler' # 'CmaEsSampler' # 'N
 # TIME_LIMIT_TRIAL = 10 * 60 # 10 min
 
 
-#############################################################################################################
-#                               Loading Data and Selecting Features and Target                              #
-#############################################################################################################
+###################################################################################
+#    Loading Data and Selecting Features and Target                              #
+###################################################################################
 
 df = pd.read_pickle(
     "./../../../data/processed/GFA_binary_CHEM.pkl.zip", compression="zip"
@@ -88,9 +179,9 @@ FEATURES = df.columns.drop(TARGET)
 le = LabelEncoder()
 df["GF"] = le.fit_transform(df["GF"])
 
-#############################################################################################################
-#                                   Splitting Data into Train and Test Sets                                 #
-#############################################################################################################
+###################################################################################
+#        Splitting Data into Train and Test Sets                                 #
+###################################################################################
 
 # indices = df.index
 # train_indices, test_indices = train_test_split(
@@ -99,9 +190,13 @@ df["GF"] = le.fit_transform(df["GF"])
 
 train_indices = np.load("./../../../data/support/train_indices.npy")
 test_indices = np.load("./../../../data/support/test_indices.npy")
+test_data_leak_indices = np.load("./../../../data/support/test_data_leak_indices.npy")
 
 train_df = df.loc[train_indices]
 test_df = df.loc[test_indices]
+
+# para evitar data leakage
+test_df = test_df.loc[test_data_leak_indices]
 
 X_train = train_df.reindex(FEATURES, axis=1).values
 y_train = train_df.reindex(TARGET, axis=1).values.ravel()
@@ -117,9 +212,9 @@ y = df.reindex(TARGET, axis=1).values.ravel()
 #     X_train, y_train, test_size=VAL_SPLIT_SIZE, random_state=RANDOM_SEED, stratify=y_train
 # )
 
-#############################################################################################################
-#                                       Define the Search Space                                             #
-#############################################################################################################
+###################################################################################
+#            Define the Search Space                                             #
+###################################################################################
 
 
 def create_rf_model(trial):
@@ -202,9 +297,9 @@ def create_rf_model(trial):
     return model
 
 
-#############################################################################################################
-#                                    Objective Function for Optuna CV                                     #
-#############################################################################################################
+###################################################################################
+#         Objective Function for Optuna CV                                     #
+###################################################################################
 
 
 def objective_function(trial, X, y):
@@ -239,9 +334,9 @@ def partial_objective_function(trial):
     return objective_function(trial, X_train, y_train)
 
 
-#############################################################################################################
-#                                   Create and Optimize the Study Objective                                 #
-#############################################################################################################
+###################################################################################
+#        Create and Optimize the Study Objective                                 #
+###################################################################################
 
 study_object = create_study(
     direction="maximize",
@@ -250,52 +345,54 @@ study_object = create_study(
     load_if_exists=True,
 )
 
-initial_guess = {
-    "n_estimators": 100,
-    "criterion": "gini",
-    "min_samples_split": 2,
-    "min_samples_leaf": 1,
-    "has_max_depth": False,
-    "max_features_is_float": False,
-    "max_features_categorical": "sqrt",
-    "has_max_leaf_nodes": False,
-    "min_impurity_decrease_is_float": False,
-    "has_class_weight": False,
-    "has_ccp_alpha": False,
-    "max_samples_is_float": False,
-    # CONSTANTS
-    # "random_state": RANDOM_SEED,
-    # "bootstrap": True,
-    # "n_jobs": -1,
-}
+if SEARCH:
 
-study_object.enqueue_trial(initial_guess)
+    initial_guess = {
+        "n_estimators": 100,
+        "criterion": "gini",
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "has_max_depth": False,
+        "max_features_is_float": False,
+        "max_features_categorical": "sqrt",
+        "has_max_leaf_nodes": False,
+        "min_impurity_decrease_is_float": False,
+        "has_class_weight": False,
+        "has_ccp_alpha": False,
+        "max_samples_is_float": False,
+        # CONSTANTS
+        # "random_state": RANDOM_SEED,
+        # "bootstrap": True,
+        # "n_jobs": -1,
+    }
 
-trials_time_list = []
+    study_object.enqueue_trial(initial_guess)
 
-for _ in range(N_TRIALS):
+    trials_time_list = []
 
-    start_time = time.time()
+    for _ in range(N_TRIALS):
 
-    study_object.optimize(partial_objective_function, n_trials=1)
-    # study_object.optimize(partial_objective_function, n_trials=1, timeout=TIME_LIMIT_TRIAL)
-    # study_object.trials_dataframe().to_csv(f'model/trials_RF_{METRIC_NAME}_{N_TRIALS}.csv')
+        start_time = time.time()
 
-    end_time = time.time()
+        study_object.optimize(partial_objective_function, n_trials=1)
+        # study_object.optimize(partial_objective_function, n_trials=1, timeout=TIME_LIMIT_TRIAL)
+        # study_object.trials_dataframe().to_csv(f'model/trials_RF_{METRIC_NAME}_{N_TRIALS}.csv')
 
-    # Calculate the execution time per trial
-    execution_time = (end_time - start_time) / 60
-    trials_time_list.append(execution_time)
+        end_time = time.time()
 
-# Calculate the mean and the standard deviation with trials time list
-trial_time_mean = np.mean(trials_time_list)
+        # Calculate the execution time per trial
+        execution_time = (end_time - start_time) / 60
+        trials_time_list.append(execution_time)
 
-trial_time_std = np.std(trials_time_list)
+    # Calculate the mean and the standard deviation with trials time list
+    trial_time_mean = np.mean(trials_time_list)
+
+    trial_time_std = np.std(trials_time_list)
 
 
-#############################################################################################################
-#                                         Save Trials to CSV                                                #
-#############################################################################################################
+###################################################################################
+#              Save Trials to CSV                                                #
+###################################################################################
 
 results = []
 for trial in study_object.trials:
@@ -314,13 +411,15 @@ for trial in study_object.trials:
     )
 
 results_df = pd.DataFrame(results)
-results_df.to_csv(
-    f"model/trials_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}.csv", index=False
-)
 
-#############################################################################################################
-#                                         Display Basic Informations                                        #
-#############################################################################################################
+# results_df.to_csv(
+#     f"model/trials_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}.csv", index=False
+# )
+
+
+###################################################################################
+#              Display Basic Informations                                        #
+###################################################################################
 
 best_trial_model = study_object.best_trial
 
@@ -332,7 +431,7 @@ print(
     f"Total number of trials: {N_TRIALS}, "
     f"with cross-validation applied to the {N_TRIALS_CROSS_VALIDATION} best trials"
 )
-print(f"Mean time per trial: {trial_time_mean:.3f} ± {trial_time_std:.3f} minutes")
+# print(f"Mean time per trial: {trial_time_mean:.3f} ± {trial_time_std:.3f} minutes")
 # print(f"Time limit per trial: {(TIME_LIMIT_TRIAL / 60):.2f} minutes")
 print(f"Best trial number: {best_trial_model.number}")
 print(f"Best trial parameters: {best_trial_model.params}")
@@ -351,117 +450,132 @@ print(
 print(
     f"Standard Deviation of {METRIC_NAME} for the best trial by cross validation: {results_df.loc[best_trial_model.number, 'std']:.4f} \n"
 )
-print(
-    f"#############################################################################################################\n"
+
+
+###############################################################################
+#                                 Calibration                                 #
+###############################################################################
+
+str = f"calibrated_model_binary_unimodal_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}"
+
+try:
+    calibrated_model = joblib.load(f"model/{str}.pkl")
+
+except FileNotFoundError:
+
+    base_estimator = create_rf_model(best_trial_model)
+
+    calibrated_model = CalibratedClassifierCV(
+        estimator=base_estimator,
+        method="isotonic",
+        cv=5,
+        n_jobs=-1,
+    )
+
+    calibrated_model.fit(X_train, y_train)
+
+    joblib.dump(calibrated_model, f"model/{str}.pkl")
+
+print(f"## Best RF Model (calibrated) - Related to majority class (glass)\n")
+metrics = evaluate_binary_model(calibrated_model, X_test, y_test, classe=1)
+pprint(metrics)
+ap_glass = metrics["pr_auc"]
+print()
+
+print(f"## Best RF Model (calibrated) - Related to minority class (crystal)\n")
+metrics = evaluate_binary_model(calibrated_model, X_test, y_test, classe=0)
+pprint(metrics)
+ap_crystal = metrics["pr_auc"]
+print()
+
+pr_auc_macro_true = (ap_glass + ap_crystal) / 2
+print("True PR-macro", pr_auc_macro_true)
+print()
+print()
+
+
+###################################################################################
+#          Display the Optimized Model Metrics                                   #
+###################################################################################
+
+print(f"#### Best RF Model\n")
+
+str = f"best_model_binary_unimodal_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}"
+
+try:
+    best_model = joblib.load(f"model/{str}.pkl")
+
+except FileNotFoundError:
+    best_model = create_rf_model(best_trial_model)
+    best_model.fit(X_train, y_train)
+    joblib.dump(best_model, f"model/{str}.pkl")
+
+print(f"## Best RF Model (uncalibrated) - Related to majority class (glass)\n")
+metrics = evaluate_binary_model(best_model, X_test, y_test, classe=1)
+pprint(metrics)
+ap_glass = metrics["pr_auc"]
+print()
+
+print(f"## Best RF Model (uncalibrated) - Related to minority class (crystal)\n")
+metrics = evaluate_binary_model(best_model, X_test, y_test, classe=0)
+pprint(metrics)
+ap_crystal = metrics["pr_auc"]
+print()
+
+pr_auc_macro_true = (ap_glass + ap_crystal) / 2
+print("True PR-macro", pr_auc_macro_true)
+print()
+print()
+
+
+ece_before = plot_reliability_diagram_and_ece(
+    best_model, X_test, y_test, model_name="RF_uncalibrated"
+)
+ece_after = plot_reliability_diagram_and_ece(
+    calibrated_model, X_test, y_test, model_name="RF_calibrated"
 )
 
-
-#############################################################################################################
-#                                     Display the Optimized Model Metrics                                   #
-#############################################################################################################
-
-# The best model is trained with all the data and tested
-best_RF_model_total = create_rf_model(best_trial_model)
-
-best_RF_model_total.fit(X_train, y_train)
-y_pred_RF = best_RF_model_total.predict(X_test)
-y_pred_proba = best_RF_model_total.predict_proba(X_test)[:, 1]
-
-roc_auc_RF = roc_auc_score(y_test, y_pred_proba)
-print(f"ROC AUC metric for optimized model: {roc_auc_RF:.4f} \n")
-
-pr_auc_RF = average_precision_score(y_test, y_pred_proba)
-print(f"PR AUC metric for optimized model: {pr_auc_RF:.4f}")
-
-pr_auc_macro_RF = average_precision_score(y_test, y_pred_proba, average="macro")
-print(f"PR AUC Macro metric for optimized model: {pr_auc_macro_RF:.4f}")
-
-pr_auc_micro_RF = average_precision_score(y_test, y_pred_proba, average="micro")
-print(f"PR AUC Micro metric for optimized model: {pr_auc_micro_RF:.4f} \n")
-
-f1_score_RF = f1_score(y_test, y_pred_RF)
-print(f"F1-Score Binary (BCC) metric for optimized model: {f1_score_RF:.4f}")
-
-f1_score_macro_RF = f1_score(y_test, y_pred_RF, average="macro")
-print(f"F1-Score Macro metric for optimized model: {f1_score_macro_RF:.4f}")
-
-f1_score_micro_RF = f1_score(y_test, y_pred_RF, average="micro")
-print(f"F1-Score Micro metric for optimized model: {f1_score_micro_RF:.4f} \n")
-
-precision_RF = precision_score(y_test, y_pred_RF)
-print(f"Precision Binary (BCC) metric for optimized model: {precision_RF:.4f}")
-
-recall_RF = recall_score(y_test, y_pred_RF)
-print(f"Recall Binary (BCC) metric for optimized model: {recall_RF:.4f} \n")
-
-accuracy_RF = accuracy_score(y_test, y_pred_RF)
-print(f"Accuracy metric for optimized model: {accuracy_RF:.4f}")
-
-balanced_accuracy_RF = balanced_accuracy_score(y_test, y_pred_RF)
-print(f"Balanced Accuracy metric for optimized model: {balanced_accuracy_RF:.4f} \n")
-
-log_loss_RF = log_loss(y_test, y_pred_proba)
-print(f"Log Loss metric for optimized model: {log_loss_RF:.4f}")
-
-brier_score_RF = brier_score_loss(y_test, y_pred_proba)
-print(f"Brier Score metric for optimized model: {brier_score_RF:.4f} \n")
-
-joblib.dump(
-    best_RF_model_total,
-    f"model/best_model_binary_unimodal_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}.pkl",
-)
+print()
+print()
 
 
-#############################################################################################################
-#                                      Display the Standard Model Metrics                                   #
-#############################################################################################################
+###############################################################################
+#                                   Baseline                                  #
+###############################################################################
 
-print(
-    f"#############################################################################################################\n"
-)
+print(f"#### Dummy Model\n")
 
-# The best model is trained with all the data and tested
-RF_model = RandomForestClassifier()
+dummy_model = DummyClassifier()
+dummy_model.fit(X_train, y_train)
 
-RF_model.fit(X_train, y_train)
-y_pred_RF = RF_model.predict(X_test)
-y_pred_proba = RF_model.predict_proba(X_test)[:, 1]
+print(f"## Dummy Model - Related to majority class (glass)\n")
+metrics = evaluate_binary_model(dummy_model, X_test, y_test, classe=1)
+pprint(metrics)
+ap_glass = metrics["pr_auc"]
+print()
 
-roc_auc_RF = roc_auc_score(y_test, y_pred_proba)
-print(f"ROC AUC metric for standard model: {roc_auc_RF:.4f} \n")
+print(f"## Dummy Model - Related to minority class (crystal)\n")
+metrics = evaluate_binary_model(dummy_model, X_test, y_test, classe=0)
+pprint(metrics)
+ap_crystal = metrics["pr_auc"]
+print()
 
-pr_auc_RF = average_precision_score(y_test, y_pred_proba)
-print(f"PR AUC metric for standard model: {pr_auc_RF:.4f}")
+pr_auc_macro_true = (ap_glass + ap_crystal) / 2
+print("True PR-macro", pr_auc_macro_true)
+print()
+print()
 
-pr_auc_macro_RF = average_precision_score(y_test, y_pred_proba, average="macro")
-print(f"PR AUC Macro metric for standard model: {pr_auc_macro_RF:.4f}")
+###################################################################################
+#           Display the Standard Model Metrics                                   #
+###################################################################################
 
-pr_auc_micro_RF = average_precision_score(y_test, y_pred_proba, average="micro")
-print(f"PR AUC Micro metric for standard model: {pr_auc_micro_RF:.4f} \n")
+if STANDARD_MODEL:
+    print(f"#### Standard RF Model\n")
 
-f1_score_RF = f1_score(y_test, y_pred_RF)
-print(f"F1-Score Binary (BCC) metric for standard model: {f1_score_RF:.4f}")
+    # The best model is trained with all the data and tested
+    RF_model = RandomForestClassifier()
 
-f1_score_macro_RF = f1_score(y_test, y_pred_RF, average="macro")
-print(f"F1-Score Macro metric for standard model: {f1_score_macro_RF:.4f}")
+    RF_model.fit(X_train, y_train)
 
-f1_score_micro_RF = f1_score(y_test, y_pred_RF, average="micro")
-print(f"F1-Score Micro metric for standard model: {f1_score_micro_RF:.4f} \n")
-
-precision_RF = precision_score(y_test, y_pred_RF)
-print(f"Precision Binary (BCC) metric for standard model: {precision_RF:.4f}")
-
-recall_RF = recall_score(y_test, y_pred_RF)
-print(f"Recall Binary (BCC) metric for standard model: {recall_RF:.4f} \n")
-
-accuracy_RF = accuracy_score(y_test, y_pred_RF)
-print(f"Accuracy metric for standard model: {accuracy_RF:.4f}")
-
-balanced_accuracy_RF = balanced_accuracy_score(y_test, y_pred_RF)
-print(f"Balanced Accuracy metric for standard model: {balanced_accuracy_RF:.4f} \n")
-
-log_loss_RF_std = log_loss(y_test, y_pred_proba)
-print(f"Log Loss metric for standard model: {log_loss_RF_std:.4f}")
-
-brier_score_RF_std = brier_score_loss(y_test, y_pred_proba)
-print(f"Brier Score metric for standard model: {brier_score_RF_std:.4f} \n")
+    metrics = evaluate_binary_model(RF_model, X_test, y_test)
+    pprint(metrics)
