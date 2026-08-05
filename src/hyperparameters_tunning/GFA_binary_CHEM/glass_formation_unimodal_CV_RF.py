@@ -179,6 +179,7 @@ FEATURES = df.columns.drop(TARGET)
 le = LabelEncoder()
 df["GF"] = le.fit_transform(df["GF"])
 
+
 ###################################################################################
 #        Splitting Data into Train and Test Sets                                 #
 ###################################################################################
@@ -474,7 +475,7 @@ except FileNotFoundError:
 
     calibrated_model.fit(X_train, y_train)
 
-    joblib.dump(calibrated_model, f"model/{str}.pkl")
+    joblib.dump(calibrated_model, f"model/{str}.pkl", compress=3)
 
 print(f"## Best RF Model (calibrated) - Related to majority class (glass)\n")
 metrics = evaluate_binary_model(calibrated_model, X_test, y_test, classe=1)
@@ -508,7 +509,7 @@ try:
 except FileNotFoundError:
     best_model = create_rf_model(best_trial_model)
     best_model.fit(X_train, y_train)
-    joblib.dump(best_model, f"model/{str}.pkl")
+    joblib.dump(best_model, f"model/{str}.pkl", compress=3)
 
 print(f"## Best RF Model (uncalibrated) - Related to majority class (glass)\n")
 metrics = evaluate_binary_model(best_model, X_test, y_test, classe=1)
