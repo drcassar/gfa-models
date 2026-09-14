@@ -7,8 +7,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 from scipy.spatial.distance import cdist
-from scipy.stats import describe, kstest
-from sklearn.metrics.pairwise import cosine_similarity
+from scipy.stats import kstest
 from sklearn.neighbors import NearestNeighbors
 
 # from sklearn.preprocessing import LabelEncoder
@@ -82,7 +81,7 @@ if __name__ == "__main__":
     df = pd.concat(
         [
             pd.DataFrame({"value": treino_treino, "Source": "Train x Train"}),
-            pd.DataFrame({"value": treino_teste, "Source": "Train x Test"}),
+            pd.DataFrame({"value": treino_teste, "Source": "Train x Holdout"}),
         ],
         ignore_index=True,
     )
@@ -109,10 +108,10 @@ if __name__ == "__main__":
     axe.axvline(LIMIT, ls="--", c="red")
 
     fig = axe.get_figure()
-    axe.set(xlim=[0, 0.25])
+    axe.set(xlim=[0, 0.25], xlabel="Minimum Manhattan Distance")
 
     figext = ".png"
-    path = Path(rf"plots/check distribution")
+    path = Path(rf"plots/compare_distributions")
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(
         path.with_suffix(figext),
@@ -126,5 +125,5 @@ if __name__ == "__main__":
     #                         Kolmogorov-Smirnov test                         #
     ###########################################################################
 
-    result = kstest(treino_treino, treino_teste)
+    result = kstest(treino_treino, treino_teste, alternative="less")
     print(result)

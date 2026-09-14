@@ -9,10 +9,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import (
-    accuracy_score, balanced_accuracy_score, roc_auc_score,
-    average_precision_score, f1_score, precision_score,
-    recall_score, brier_score_loss, log_loss,
-    classification_report, make_scorer
+    accuracy_score,
+    balanced_accuracy_score,
+    roc_auc_score,
+    average_precision_score,
+    f1_score,
+    precision_score,
+    recall_score,
+    brier_score_loss,
+    log_loss,
+    classification_report,
+    make_scorer,
 )
 
 # --- Configuration & Constants ---
@@ -24,6 +31,7 @@ RANDOM_STATE_NUM = 0
 TEST_DATA_SIZE = 0.1
 MAX_FEATURES = 100  # Number of features to select
 NUM_FOLDS = 10
+
 
 def evaluate_model(model, X_test, y_test, label_encoder=None):
     """
@@ -48,9 +56,8 @@ def evaluate_model(model, X_test, y_test, label_encoder=None):
     pr_auc_class0 = average_precision_score(1 - y_test, y_pred_proba[:, 0])
     pr_auc_macro = np.mean([pr_auc_class0, pr_auc_class1])
     pr_auc_micro = average_precision_score(y_test, y_pred_proba[:, 1], average="micro")
-    pr_auc_weighted = (
-        pr_auc_class0 * np.mean(y_test == 0) +
-        pr_auc_class1 * np.mean(y_test == 1)
+    pr_auc_weighted = pr_auc_class0 * np.mean(y_test == 0) + pr_auc_class1 * np.mean(
+        y_test == 1
     )
 
     # --- F1 scores ---
@@ -116,31 +123,31 @@ def run_feature_selection():
 
     # --- Load and Prepare Data ---
     print(f"Loading data from {INPUT_FILE}...")
-    df = pd.read_pickle(INPUT_FILE, compression='zip')
+    df = pd.read_pickle(INPUT_FILE, compression="zip")
 
-    X_elements = df['elements']
-    X_abs = df['absolute_properties']
-    X_weighted = df['weighted_properties']
-    X_meta = df['metadata']
-    y = df['target']
+    X_elements = df["elements"]
+    X_abs = df["absolute_properties"]
+    X_weighted = df["weighted_properties"]
+    X_meta = df["metadata"]
+    y = df["target"]
 
     df_selection = pd.concat([X_elements, X_abs, X_weighted, X_meta, y], axis=1)
 
-    TARGET = ['GF']
+    TARGET = ["GF"]
     FEATURES = df_selection.columns.drop(TARGET)
 
     le = LabelEncoder()
-    df_selection['GF'] = le.fit_transform(df_selection['GF'])
+    df_selection["GF"] = le.fit_transform(df_selection["GF"])
 
     # train_indices, test_indices = train_test_split(
-    #     df_selection.index, 
-    #     test_size=TEST_DATA_SIZE, 
-    #     random_state=RANDOM_STATE_NUM, 
+    #     df_selection.index,
+    #     test_size=TEST_DATA_SIZE,
+    #     random_state=RANDOM_STATE_NUM,
     #     stratify=df_selection[TARGET]
     # )
 
-    train_indices = np.load(SPLIT_DATA_DIR + 'train_indices.npy')
-    test_indices = np.load(SPLIT_DATA_DIR + 'test_indices.npy')
+    train_indices = np.load(SPLIT_DATA_DIR + "train_indices.npy")
+    test_indices = np.load(SPLIT_DATA_DIR + "test_indices.npy")
 
     train_df_selection = df_selection.loc[train_indices]
     test_df_selection = df_selection.loc[test_indices]
@@ -152,14 +159,20 @@ def run_feature_selection():
     y_test = test_df_selection.reindex(TARGET, axis=1).values.ravel()
 
     # --- Setup Estimator ---
-    estimator = RandomForestClassifier(random_state=RANDOM_STATE_NUM, class_weight='balanced', n_jobs=-1)
+    estimator = RandomForestClassifier(
+        random_state=RANDOM_STATE_NUM, class_weight="balanced", n_jobs=-1
+    )
     scorer = make_scorer(f1_score, average="macro")
-    cv = StratifiedKFold(n_splits=NUM_FOLDS, shuffle=True, random_state=RANDOM_STATE_NUM)
+    cv = StratifiedKFold(
+        n_splits=NUM_FOLDS, shuffle=True, random_state=RANDOM_STATE_NUM
+    )
 
     # --- Initial Evaluation (All Features) ---
     print("\n=== Initial Model Evaluation on Full Feature Set ===")
-    scores = cross_val_score(estimator, X_train, y_train, cv=cv, scoring=scorer, n_jobs=-1)
-    
+    scores = cross_val_score(
+        estimator, X_train, y_train, cv=cv, scoring=scorer, n_jobs=-1
+    )
+
     mean_score = np.mean(scores)
     median_score = np.median(scores)
     std_score = np.std(scores)
@@ -170,8 +183,9 @@ def run_feature_selection():
     print(f"Median F1 Score (macro): {median_score:.4f}")
     print(f"Std F1 Score (macro): {std_score:.4f}")
     print(f"Criterion Score (min of mean/median): {criterion_score:.4f}")
-    
+
     print("\nTraining baseline model on full training set...")
+
     estimator.fit(X_train, y_train)
     evaluate_model(estimator, X_test, y_test, label_encoder=le)
 
@@ -181,7 +195,7 @@ def run_feature_selection():
     # --- Sequential Forward Selection (SFS) ---
     selected_features = []
     remaining_features = FEATURES.to_list().copy()
-    
+
     results = []
     all_combinations_results = []
     iteration_times = []
@@ -189,21 +203,29 @@ def run_feature_selection():
     for iteration in range(MAX_FEATURES):
         iteration_start_time = time.time()
         iteration_results = []
-        
-        print(f"\n=== Iteration {iteration + 1}: Selecting feature {iteration + 1} of {MAX_FEATURES} ===")
+
+        print(
+            f"\n=== Iteration {iteration + 1}: Selecting feature {iteration + 1} of {MAX_FEATURES} ==="
+        )
         print(f"Currently selected: {selected_features}")
-        
-        for feat in tqdm(remaining_features, desc=f"Testing features (n={len(selected_features)})"):
+
+        for feat in tqdm(
+            remaining_features, desc=f"Testing features (n={len(selected_features)})"
+        ):
             candidate_features = selected_features + [feat]
-            
+
             # Subsetting the features
-            X_candidate = pd.DataFrame(X_train, columns=FEATURES)[candidate_features].values
-            
-            scores = cross_val_score(estimator, X_candidate, y_train, cv=cv, scoring=scorer, n_jobs=-1)
+            X_candidate = pd.DataFrame(X_train, columns=FEATURES)[
+                candidate_features
+            ].values
+
+            scores = cross_val_score(
+                estimator, X_candidate, y_train, cv=cv, scoring=scorer, n_jobs=-1
+            )
 
             iter_mean = np.mean(scores)
             iter_median = np.median(scores)
-            
+
             iteration_result = {
                 "iteration": iteration + 1,
                 "added_feature": feat,
@@ -215,16 +237,18 @@ def run_feature_selection():
                 "std_score": np.std(scores),
                 "criterion_score": min(iter_mean, iter_median),
                 "min_score": np.min(scores),
-                "max_score": np.max(scores)
+                "max_score": np.max(scores),
             }
-            
+
             iteration_results.append(iteration_result)
             all_combinations_results.append(iteration_result)
 
         # Pick the best candidate
         best_candidate = max(iteration_results, key=lambda x: x["criterion_score"])
         selected_features = best_candidate["selected_features"]
-        remaining_features = [f for f in remaining_features if f != best_candidate["added_feature"]]
+        remaining_features = [
+            f for f in remaining_features if f != best_candidate["added_feature"]
+        ]
         results.append(best_candidate)
 
         # Track timing
@@ -241,33 +265,62 @@ def run_feature_selection():
     df_results_final = pd.DataFrame(results)
 
     # 1. Save Final SFS Results
-    final_res_file = os.path.join(OUTPUT_DIR, 'SFS_final_results.xlsx')
-    with pd.ExcelWriter(final_res_file, engine='openpyxl') as writer:
-        df_results_final.to_excel(writer, sheet_name='Selected_Features_Summary', index=False)
-        
-        perf_summary = df_results_final[['added_feature', 'median_score', 'mean_score', 'std_score', 'criterion_score']].copy()
-        perf_summary['cumulative_features'] = perf_summary.index + 1
-        perf_summary.to_excel(writer, sheet_name='Performance_Summary', index=False)
-        
-        pd.DataFrame({'final_selected_features': selected_features}).to_excel(writer, sheet_name='Final_Selection', index=False)
-        
-        pd.DataFrame({
-            'total_combinations_tested': [len(all_combinations_results)],
-            'total_iterations': [MAX_FEATURES],
-            'average_combinations_per_iteration': [len(all_combinations_results) / MAX_FEATURES]
-        }).to_excel(writer, sheet_name='Combinations_Count', index=False)
-    
+    final_res_file = os.path.join(OUTPUT_DIR, "SFS_final_results.xlsx")
+
+    with pd.ExcelWriter(final_res_file, engine="openpyxl") as writer:
+        df_results_final.to_excel(
+            writer, sheet_name="Selected_Features_Summary", index=False
+        )
+
+        perf_summary = df_results_final[
+            [
+                "added_feature",
+                "median_score",
+                "mean_score",
+                "std_score",
+                "criterion_score",
+            ]
+        ].copy()
+        perf_summary["cumulative_features"] = perf_summary.index + 1
+        perf_summary.to_excel(writer, sheet_name="Performance_Summary", index=False)
+
+        pd.DataFrame({"final_selected_features": selected_features}).to_excel(
+            writer, sheet_name="Final_Selection", index=False
+        )
+
+        pd.DataFrame(
+            {
+                "total_combinations_tested": [len(all_combinations_results)],
+                "total_iterations": [MAX_FEATURES],
+                "average_combinations_per_iteration": [
+                    len(all_combinations_results) / MAX_FEATURES
+                ],
+            }
+        ).to_excel(writer, sheet_name="Combinations_Count", index=False)
+
     print(f"Saved: {final_res_file}")
 
     # --- Train Final Model ---
     print("\n=== Final Selected Features ===")
-    print(df_results_final[['added_feature', 'median_score', 'mean_score', 'std_score', 'criterion_score']])
+    print(
+        df_results_final[
+            [
+                "added_feature",
+                "median_score",
+                "mean_score",
+                "std_score",
+                "criterion_score",
+            ]
+        ]
+    )
     print(f"\nTraining final model on {len(selected_features)} selected features...")
 
     X_train_top = pd.DataFrame(X_train, columns=FEATURES)[selected_features]
     X_test_top = pd.DataFrame(X_test, columns=FEATURES)[selected_features]
 
-    final_estimator = RandomForestClassifier(random_state=RANDOM_STATE_NUM, class_weight='balanced', n_jobs=-1)
+    final_estimator = RandomForestClassifier(
+        random_state=RANDOM_STATE_NUM, class_weight="balanced", n_jobs=-1
+    )
     final_estimator.fit(X_train_top, y_train)
 
     evaluate_model(final_estimator, X_test_top, y_test, label_encoder=le)
@@ -278,25 +331,30 @@ def run_feature_selection():
     print(f"\n=== EXECUTION SUMMARY ===")
     print(f"Total iterations: {MAX_FEATURES}")
     print(f"Total combinations tested: {len(all_combinations_results)}")
-    print(f"Average combinations per iteration: {len(all_combinations_results) / MAX_FEATURES:.1f}")
+    print(
+        f"Average combinations per iteration: {len(all_combinations_results) / MAX_FEATURES:.1f}"
+    )
     print(f"Final selected features: {selected_features}")
 
     print(f"\n=== TIMING INFORMATION ===")
     print(f"Total execution time: {total_time:.2f}s ({total_time/60:.2f}m)")
     print(f"Average time per iteration: {np.mean(iteration_times):.2f}s")
-    
+
     # 2. Save Timing Information
-    timing_file = os.path.join(OUTPUT_DIR, 'execution_timing.xlsx')
-    pd.DataFrame({
-        'total_execution_time_seconds': [total_time],
-        'total_execution_time_minutes': [total_time/60],
-        'average_iteration_time_seconds': [np.mean(iteration_times)],
-        'total_iterations_time_seconds': [np.sum(iteration_times)],
-        'number_of_iterations': [MAX_FEATURES],
-        'total_combinations_tested': [len(all_combinations_results)]
-    }).to_excel(timing_file, index=False)
+    timing_file = os.path.join(OUTPUT_DIR, "execution_timing.xlsx")
+    pd.DataFrame(
+        {
+            "total_execution_time_seconds": [total_time],
+            "total_execution_time_minutes": [total_time / 60],
+            "average_iteration_time_seconds": [np.mean(iteration_times)],
+            "total_iterations_time_seconds": [np.sum(iteration_times)],
+            "number_of_iterations": [MAX_FEATURES],
+            "total_combinations_tested": [len(all_combinations_results)],
+        }
+    ).to_excel(timing_file, index=False)
 
     print(f"Saved: {timing_file}")
+
 
 if __name__ == "__main__":
     run_feature_selection()

@@ -92,6 +92,41 @@ def evaluate_binary_model(model, X_test, y_test, classe=1):
     return metrics
 
 
+def compute_ece(y_true, y_prob, n_bins=10):
+    """
+    Computes Expected Calibration Error (ECE) from true labels and
+    predicted probabilities for the positive class.
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n,)
+        True binary labels.
+    y_prob : array-like of shape (n,)
+        Predicted probability of the positive class (class 1).
+    n_bins : int
+        Number of equal-width bins over [0, 1].
+
+    Returns
+    -------
+    ece : float
+    """
+    y_true = np.asarray(y_true)
+    y_prob = np.asarray(y_prob)
+
+    bin_edges = np.linspace(0, 1, n_bins + 1)
+    ece = 0.0
+
+    for i in range(n_bins):
+        in_bin = (y_prob >= bin_edges[i]) & (y_prob < bin_edges[i + 1])
+        if in_bin.sum() > 0:
+            bin_confidence = y_prob[in_bin].mean()
+            bin_accuracy = y_true[in_bin].mean()
+            bin_weight = in_bin.sum() / len(y_prob)
+            ece += bin_weight * abs(bin_accuracy - bin_confidence)
+
+    return ece
+
+
 def plot_reliability_diagram_and_ece(
     model, X_test, y_test, n_bins=10, model_name="Model"
 ):
@@ -105,17 +140,7 @@ def plot_reliability_diagram_and_ece(
         y_test, y_prob, n_bins=n_bins, strategy="uniform"
     )
 
-    # Expected Calibration Error (ECE)
-    # Weighted average of |accuracy - confidence| per bin
-    bin_edges = np.linspace(0, 1, n_bins + 1)
-    ece = 0.0
-    for i in range(n_bins):
-        in_bin = (y_prob >= bin_edges[i]) & (y_prob < bin_edges[i + 1])
-        if in_bin.sum() > 0:
-            bin_confidence = y_prob[in_bin].mean()
-            bin_accuracy = y_test[in_bin].mean()
-            bin_weight = in_bin.sum() / len(y_prob)
-            ece += bin_weight * abs(bin_accuracy - bin_confidence)
+    ece = compute_ece(y_test, y_prob, n_bins)
 
     # Plot
     fig, ax = plt.subplots(figsize=(5, 5))
@@ -580,3 +605,77 @@ if STANDARD_MODEL:
 
     metrics = evaluate_binary_model(RF_model, X_test, y_test)
     pprint(metrics)
+
+
+# ###############################################################################
+# #                                 Calibration                                 #
+# ###############################################################################
+
+# import numpy as np
+# from sklearn.calibration import calibration_curve
+# from sklearn.model_selection import StratifiedKFold, cross_val_predict
+# from sklearn.calibration import CalibratedClassifierCV
+# from sklearn.ensemble import RandomForestClassifier
+
+# N_OUTER_FOLDS = 5  # outer CV folds for ECE estimation
+# N_INNER_FOLDS = 5  # inner CV folds used by CalibratedClassifierCV
+# RANDOM_STATE = 42
+
+# outer_cv = StratifiedKFold(
+#     n_splits=N_OUTER_FOLDS,
+#     shuffle=True,
+#     random_state=RANDOM_STATE,
+# )
+
+# ### Main Model
+
+# main_estimator = create_rf_model(best_trial_model)
+
+# oof_proba_main = cross_val_predict(
+#     main_estimator,
+#     X_train,
+#     y_train,
+#     cv=outer_cv,
+#     method="predict_proba",
+#     n_jobs=-1,
+# )
+
+# ece_main = compute_ece(y_train, oof_proba_main[:, 1], n_bins=10)
+# print(f"ECE Main Model (out-of-fold CV on training data): {ece_main:.4f}")
+
+
+# ### Calibrated model
+
+# base_estimator = create_rf_model(best_trial_model)
+
+# calibrated_estimator = CalibratedClassifierCV(
+#     estimator=base_estimator, method="isotonic", cv=N_INNER_FOLDS, n_jobs=-1
+# )
+
+# oof_proba_calibrated = cross_val_predict(
+#     calibrated_estimator,
+#     X_train,
+#     y_train,
+#     cv=outer_cv,
+#     method="predict_proba",
+#     n_jobs=-1,
+# )
+
+# ece_calibrated = compute_ece(y_train, oof_proba_calibrated[:, 1], n_bins=10)
+# print(f"ECE Calibrated Model (out-of-fold CV on training data): {ece_calibrated:.4f}")
+
+
+# ### Decision
+
+# ECE_THRESHOLD = 10
+
+# ece_reduction = (1 - ece_calibrated / ece_main) * 100
+
+# print(f"\nECE reduction: {ece_reduction:.4f} %")
+
+# if ece_reduction < ECE_THRESHOLD:
+#     print("Reduction below threshold: retaining Main Model.")
+#     selected_model_name = "Main"
+# else:
+#     print("Reduction above threshold: selecting Calibrated Model.")
+#     selected_model_name = "Calibrated"
