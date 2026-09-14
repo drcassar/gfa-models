@@ -2,8 +2,6 @@
 #           Importing Libraries and Resources                                    #
 ###################################################################################
 
-import os
-import sys
 import time
 from pprint import pprint
 
@@ -11,7 +9,7 @@ import joblib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from optuna import Trial, create_study
+from optuna import create_study
 from sklearn.calibration import CalibratedClassifierCV, calibration_curve
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -27,7 +25,7 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
-from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import LabelEncoder
 
 

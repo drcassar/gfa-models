@@ -95,11 +95,13 @@ if CHEM:
     X = df.reindex(FEATURES, axis=1)
     y = df.reindex(TARGET, axis=1)
 
-    str = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
+    # str = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
+
+    str = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/calibrated_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
 
     model = joblib.load(str)
 
-    filename = f"explanation_shap/explanation_shap_CHEM.joblib"
+    filename = f"explanation_shap/explanation_shap_CHEM_calibrado.joblib"
 
     try:
         explanation = joblib.load(filename)
@@ -147,13 +149,13 @@ if FEATENG:
     X = df.reindex(FEATURES, axis=1)
     y = df.reindex(TARGET, axis=1)
 
-    str = f"./../src/hyperparameters_tunning/GFA_binary_FEATENG/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
+    # str = f"./../src/hyperparameters_tunning/GFA_binary_FEATENG/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
 
     str = f"./../src/hyperparameters_tunning/GFA_binary_FEATENG/model/calibrated_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
 
     model = joblib.load(str)
 
-    filename = f"explanation_shap/explanation_shap_FEATENG.joblib"
+    filename = f"explanation_shap/explanation_shap_FEATENG_calibrado.joblib"
 
     try:
         explanation = joblib.load(filename)
