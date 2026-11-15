@@ -66,10 +66,10 @@ def compute_ece(y_true, y_prob, n_bins=10):
 #                                     CHEM                                    #
 ###############################################################################
 
-# str = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
-
 model_path_chem = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/calibrated_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
+
 if not os.path.exists(model_path_chem):
+    print("Using non-calibrated CHEM model")
     model_path_chem = f"./../src/hyperparameters_tunning/GFA_binary_CHEM/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
 
 df = pd.read_pickle("./../data/processed/GFA_binary_CHEM.pkl.zip", compression="zip")
@@ -111,7 +111,9 @@ print(f"ECE CHEM test: {ece}")
 ###############################################################################
 
 model_path_feateng = f"./../src/hyperparameters_tunning/GFA_binary_FEATENG/model/calibrated_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
+
 if not os.path.exists(model_path_feateng):
+    print("Using non-calibrated FEATENG model")
     model_path_feateng = f"./../src/hyperparameters_tunning/GFA_binary_FEATENG/model/best_model_binary_unimodal_RF_f1_score_macro_2000_TPESampler.pkl"
 
 df = pd.read_pickle("./../data/processed/GFA_binary_FEATENG.pkl.zip", compression="zip")
@@ -169,7 +171,9 @@ models_data = {
     "FEATENG": y_pred_proba_feateng,
 }
 
-y_test_array = y_test.values.ravel() if hasattr(y_test, "values") else np.asarray(y_test).ravel()
+y_test_array = (
+    y_test.values.ravel() if hasattr(y_test, "values") else np.asarray(y_test).ravel()
+)
 baseline_pos = float(np.mean(y_test_array == 1))
 baseline_neg = float(np.mean(y_test_array == 0))
 baseline_macro = 0.5
@@ -222,11 +226,23 @@ for (name, y_proba), color, ls in zip(models_data.items(), colors, linestyles):
     else:
         y_score_pos = y_proba.ravel()
 
-    precision_pos, recall_pos, _ = precision_recall_curve(y_test_array, y_score_pos, pos_label=1)
+    precision_pos, recall_pos, _ = precision_recall_curve(
+        y_test_array, y_score_pos, pos_label=1
+    )
     ap_pos = average_precision_score(y_test_array, y_score_pos, pos_label=1)
-    ax2.plot(recall_pos, precision_pos, color=color, linestyle=ls, lw=2, label=f"{name}")
+    ax2.plot(
+        recall_pos, precision_pos, color=color, linestyle=ls, lw=2, label=f"{name}"
+    )
 
-ax2.plot([0, 1], [baseline_pos, baseline_pos], color="gray", linestyle="--", lw=1.2, alpha=0.8, label="DUMMY")
+ax2.plot(
+    [0, 1],
+    [baseline_pos, baseline_pos],
+    color="gray",
+    linestyle="--",
+    lw=1.2,
+    alpha=0.8,
+    label="DUMMY",
+)
 ax2.set_xlim([-0.02, 1.02])
 ax2.set_ylim([0.0, 1.05])
 ax2.set_xlabel("Recall")
@@ -253,11 +269,23 @@ for (name, y_proba), color, ls in zip(models_data.items(), colors, linestyles):
     else:
         y_score_neg = 1.0 - y_proba.ravel()
 
-    precision_neg, recall_neg, _ = precision_recall_curve(y_test_array == 0, y_score_neg)
+    precision_neg, recall_neg, _ = precision_recall_curve(
+        y_test_array == 0, y_score_neg
+    )
     ap_neg = average_precision_score(y_test_array == 0, y_score_neg)
-    ax3.plot(recall_neg, precision_neg, color=color, linestyle=ls, lw=2, label=f"{name}")
+    ax3.plot(
+        recall_neg, precision_neg, color=color, linestyle=ls, lw=2, label=f"{name}"
+    )
 
-ax3.plot([0, 1], [baseline_neg, baseline_neg], color="gray", linestyle="--", lw=1.2, alpha=0.8, label="DUMMY")
+ax3.plot(
+    [0, 1],
+    [baseline_neg, baseline_neg],
+    color="gray",
+    linestyle="--",
+    lw=1.2,
+    alpha=0.8,
+    label="DUMMY",
+)
 ax3.set_xlim([-0.02, 1.02])
 ax3.set_ylim([0.0, 1.05])
 ax3.set_xlabel("Recall")
@@ -287,8 +315,12 @@ for (name, y_proba), color, ls in zip(models_data.items(), colors, linestyles):
         y_score_pos = y_proba.ravel()
         y_score_neg = 1.0 - y_proba.ravel()
 
-    precision_pos, recall_pos, _ = precision_recall_curve(y_test_array, y_score_pos, pos_label=1)
-    precision_neg, recall_neg, _ = precision_recall_curve(y_test_array == 0, y_score_neg)
+    precision_pos, recall_pos, _ = precision_recall_curve(
+        y_test_array, y_score_pos, pos_label=1
+    )
+    precision_neg, recall_neg, _ = precision_recall_curve(
+        y_test_array == 0, y_score_neg
+    )
 
     ap_pos = average_precision_score(y_test_array, y_score_pos, pos_label=1)
     ap_neg = average_precision_score(y_test_array == 0, y_score_neg)
@@ -298,9 +330,19 @@ for (name, y_proba), color, ls in zip(models_data.items(), colors, linestyles):
     interp_neg = np.interp(recall_grid, recall_neg[::-1], precision_neg[::-1])
     precision_macro = (interp_pos + interp_neg) / 2.0
 
-    ax4.plot(recall_grid, precision_macro, color=color, linestyle=ls, lw=2, label=f"{name}")
+    ax4.plot(
+        recall_grid, precision_macro, color=color, linestyle=ls, lw=2, label=f"{name}"
+    )
 
-ax4.plot([0, 1], [baseline_macro, baseline_macro], color="gray", linestyle="--", lw=1.2, alpha=0.8, label="DUMMY")
+ax4.plot(
+    [0, 1],
+    [baseline_macro, baseline_macro],
+    color="gray",
+    linestyle="--",
+    lw=1.2,
+    alpha=0.8,
+    label="DUMMY",
+)
 ax4.set_xlim([-0.02, 1.02])
 ax4.set_ylim([0.0, 1.05])
 ax4.set_xlabel("Recall")
@@ -323,7 +365,9 @@ ax4.text(
 plt.tight_layout()
 plt.savefig("model_comparison_curves.png", dpi=300, bbox_inches="tight")
 if os.path.exists("./../reports/figures"):
-    plt.savefig("./../reports/figures/model_comparison_curves.png", dpi=300, bbox_inches="tight")
+    plt.savefig(
+        "./../reports/figures/model_comparison_curves.png", dpi=300, bbox_inches="tight"
+    )
 plt.close()
 
 
@@ -391,5 +435,7 @@ ax.spines["right"].set_visible(False)
 plt.tight_layout()
 plt.savefig("calibration_curve.png", dpi=300, bbox_inches="tight")
 if os.path.exists("./../reports/figures"):
-    plt.savefig("./../reports/figures/calibration_curve.png", dpi=300, bbox_inches="tight")
+    plt.savefig(
+        "./../reports/figures/calibration_curve.png", dpi=300, bbox_inches="tight"
+    )
 plt.close()

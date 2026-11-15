@@ -13,6 +13,7 @@ from optuna import create_study
 from sklearn.calibration import CalibratedClassifierCV, calibration_curve
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import (
     accuracy_score,
     average_precision_score,
@@ -158,6 +159,8 @@ METRIC_NAME = "f1_score_macro"
 MAIN_METRIC_SCORE = f1_score
 # MAIN_METRIC_CV = 'f1_macro'
 OPTIMIZER = "TPESampler"  # 'RandomSampler' # 'TPESampler' # 'CmaEsSampler' # 'NSGAIISampler' # 'GridSampler' # 'RandomSampler' # 'TPESampler'
+
+TRAIN_FINAL_MODEL = True
 
 # TIME_LIMIT_TRIAL = 10 * 60 # 10 min
 
@@ -473,6 +476,40 @@ except FileNotFoundError:
     calibrated_model.fit(X_train, y_train)
 
     joblib.dump(calibrated_model, f"model/{str}.pkl")
+
+if TRAIN_FINAL_MODEL:
+
+    model_path = f"model/final_calibrated_model_binary_unimodal_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}.pkl"
+
+    try:
+        calibrated_model = joblib.load(model_path)
+
+    except FileNotFoundError:
+        cv = StratifiedKFold(n_splits=NUM_FOLD, shuffle=True, random_state=RANDOM_SEED)
+
+        calibrated_model = CalibratedClassifierCV(
+            estimator=create_rf_model(best_trial_model),
+            method="isotonic",
+            cv=cv,
+            ensemble=False,
+            n_jobs=-1,
+        )
+        calibrated_model.fit(X, y)
+
+        joblib.dump(calibrated_model, model_path, compress=3)
+
+    model_path = (
+        f"model/final_model_binary_unimodal_RF_{METRIC_NAME}_{N_TRIALS}_{OPTIMIZER}.pkl"
+    )
+
+    try:
+        _ = joblib.load(model_path)
+
+    except FileNotFoundError:
+
+        best_model_ = create_rf_model(best_trial_model)
+        best_model_.fit(X, y)
+        joblib.dump(best_model_, model_path, compress=3)
 
 print(f"## Best RF Model (calibrated) - Related to majority class (glass)\n")
 metrics = evaluate_binary_model(calibrated_model, X_test, y_test, classe=1)
